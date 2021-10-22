@@ -1,7 +1,7 @@
 def binarybot(num): #so it begins!
-    #isnumber(num)
+    #isnumber(num) #may just run this prior
     bits = bitcounter(num)
-    print("there will be",bits,"bits")
+    print("there will be",bits + 1,"bits") 
     hold = num
     power = bits
     #print("2 powers",2**power)
@@ -40,13 +40,15 @@ def bitcounter(num): #how may bits are needed for the number?
         hold = hold + 1
         powers = hold
         bits = 2**hold
-    print(powers,"<-- final") # debug thingy
+    #print(powers,"<-- final") # debug thingy
     return powers
 
 
 
 #debug land
-test = int(input("test number"))
-binarybot(test)
+test = input("Provide a number to turn to binary ")
+#print(test.isnumeric())
+#isnumber(test)
+binarybot(test))
 #bitcounter(test)
 #isnumber(test)
