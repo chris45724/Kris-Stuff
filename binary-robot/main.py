@@ -1,4 +1,4 @@
-def binarybot(num): #so it begins!
+def binarybot(num): #so it begins!! 
     num = int(num)  # making sure num is an intiger !
     bits = bitcounter(num) # asking the bitcounter how many bits are needed to display the binary
     print("there will be",bits + 1,"bits") # telling you how many total bits are needed for the number
