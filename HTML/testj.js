@@ -4,5 +4,5 @@ let y;
 x = 5;
 y = x * 5;
 
-console.log(x);
-console.log(y);
+console.log("aaaaa");
+console.log(5+5);
