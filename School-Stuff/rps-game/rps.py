@@ -37,7 +37,7 @@ def winner(player1, player2): # checking who wins. Also does tie checking for fu
             return('Player 1 Wins')
     
 
-def playerpicker():
+def playerpicker():  # made this a function becasue... Not sure why
     looplimit = 0
     ppass = False
     while looplimit < 5 and ppass == False:  # this loops 5 times trying to get the player to make a valid choice
@@ -66,12 +66,14 @@ def rps(): # recycling my code becasue I'm super lazy!!
 
     robo = input('Play against computer? "yes"/"no" ')
 
-    if robo == "yes":
+    # we check to see if the player want's to play against the computer
+
+    if robo == "yes": 
         print('ok')
     if robo == "no":
         print('ok')
     else:
-        print('Unknown anwser! Defaulting to yes')
+        print('Unknown anwser! Defaulting to yes')  # super simple catch to see if player put in real anwser
         robo = 'yes'
 
 
@@ -79,6 +81,9 @@ def rps(): # recycling my code becasue I'm super lazy!!
     while play == True:
         
         
+        # no more clearing. We have to give feedback to the userser for playing against robo
+
+
         print('')
         print('')
         print('')
@@ -109,8 +114,10 @@ def rps(): # recycling my code becasue I'm super lazy!!
         
         print("Player twos's choice! no peaking player one!")
         
+    
+        # do they play a robot?
         if robo == 'yes':
-            player2 = roboplayer()
+            player2 = roboplayer() 
         else:
             player2 = playerpicker()
         
