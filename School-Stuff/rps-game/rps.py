@@ -73,7 +73,7 @@ def rps(): # recycling my code becasue I'm super lazy!!
 
     if robo == "yes": 
         print('ok')
-    if robo == "no":
+    elif robo == "no":
         print('ok')
     else:
         print('Unknown anwser! Defaulting to yes')  # super simple catch to see if player put in real anwser
@@ -149,6 +149,10 @@ def rps(): # recycling my code becasue I'm super lazy!!
             print('Player 2 picked:',player2)
             
             print(winner(player1,player2))
+
+            if robo == 'yes':
+                drawer(winner(player1,player2),player1)
+
             print('The game is over')
             print('would you like to play again?')
             playagain = input("yes/no ")
@@ -176,7 +180,7 @@ def rps(): # recycling my code becasue I'm super lazy!!
     #print("p1:",p1pass,'p2:',p2pass)
 
 
-def blade_scissors(x,y):
+def blade_scissors(x,y): # x is direction, and y was distance. Got lazy
 
     turtle.speed(4)
     turtle.setheading(x)
@@ -205,19 +209,165 @@ def draw_scissors():
     turtle.pensize(5)
     turtle.speed(30)
     turtle.color('grey')
-    blade_scissors(blade_angle,blade_langth)
+    blade_scissors(blade_angle,blade_langth) # got lazy. Made repeatable
     blade_scissors(-blade_angle,blade_langth)
     turtle.color('red')
     turtle.pensize(7)
     handle_scissors(blade_angle,blade_langth/3,-blade_langth/6)
     handle_scissors(-blade_angle,blade_langth/3,blade_langth/6)
     turtle.pu()
-    turtle.setposition(0,0)
+    turtle.setposition(0,0) # return to 0,0 to start another thing i guess
+
+
+def draw_rock():
+    bottom = 150 # defining the size. Labled bottom becasue it was going to only be the bottom side. Shapes are scalable, so i based everything off this one size. math is cool
+    turtle.pensize(5)
+
+    turtle.color('brown')
+    turtle.pensize(5)
+    turtle.pu()
+    turtle.forward(bottom)
+    turtle.pd()
+    turtle.begin_fill()
+    turtle.backward(bottom*2)
+    turtle.setheading(60)
+    turtle.forward(bottom)
+    turtle.setheading(0)
+    turtle.forward(bottom)
+    turtle.setheading(-60)
+    turtle.forward(bottom)
+    turtle.end_fill()
+    turtle.pu()
+    turtle.setpos(0,0)
+    
+def draw_paper(): # i am sorry this isnt centerd. I am to tired to center it!
+
+    size = 70 # look at rocks 'bottom'
+    turtle.pensize(5)
+
+
+    #black box
+    h=0
+
+
+    turtle.color('black')
+    turtle.pu()
+    turtle.setheading(90)
+    turtle.forward(-size)
+    turtle.setheading(0)
+    turtle.forward(-size*3)
+    turtle.pd()
+    turtle.begin_fill()
+    while h in range(360):
+        turtle.setheading(h)
+        turtle.forward(size*5)
+        h = h + 90
+    turtle.end_fill()
+    turtle.pu()
+    #turtle.speed(1) used for debugging
+    turtle.setheading(0)
+    turtle.forward(size*2)
+    turtle.setheading(90)
+    turtle.forward(size)
+    turtle.setheading(0)
+
+
+
+
+    #paper starts here
+    turtle.setheading(0)
+    turtle.color('white')
+    turtle.pensize(5)
+    turtle.pu()
+    turtle.forward(size)
+    turtle.pd()
+    turtle.begin_fill()
+    turtle.forward(-size*2)
+    turtle.setheading(60)
+    turtle.forward(size*3)
+    turtle.setheading(0)
+    turtle.forward(size*2)
+    turtle.setheading(60)
+    turtle.forward(-size*3)
+    turtle.end_fill()
+
+
+def draw_human():
+
+    turtle.color('black')
+
+    turtle.pensize(4)
+    size = 30
+
+    turtle.pu() # all the stuff that makes it an h is here...
+    turtle.forward(size/2)
+    turtle.pd()
+    turtle.forward(-size)
+    turtle.setheading(90)
+    turtle.forward(-size)
+    turtle.forward(size*2)
+    turtle.forward(-size)
+    turtle.setheading(0)
+    turtle.forward(size)
+    turtle.setheading(90)
+    turtle.forward(-size)
+    turtle.forward(size*2)
+    turtle.forward(-size)
+    turtle.setheading(0)
+    turtle.forward(-size/2)
+    turtle.pu()
+
+
+
+
+def draw_computer(): # draw computer... 
+    turtle.color('black')
+
+    turtle.pensize(4)
+    size = 30
+    #turtle.speed(1)
+    turtle.pd()
+    turtle.setheading(28)
+    turtle.circle(size, -230)
+    turtle.pu()
+    turtle.forward(30)
+
 
 def turttest():
     turtle.Screen()
-    draw_scissors()
+    #draw_scissors()
+    #draw_rock()
+    #draw_paper()
+    #draw_human()
+    draw_computer()
 
+def drawer(winner,pchoice): # we draw what the player chose, and we draw who won!
+    turtle.Screen()
+
+    if pchoice == 'rock':
+        draw_rock()
+        pass
+
+    if pchoice == 'paper':
+        draw_paper()
+
+    if pchoice == 'scissors':
+        draw_scissors()
+
+
+    if winner == 'Player 2 Wins':
+
+        turtle.pu()
+        turtle.setheading(-90)
+        turtle.forward(150)
+        turtle.setheading(0)
+        draw_computer()
+    else:
+        turtle.pu()
+        turtle.setheading(-90)
+        turtle.forward(150)
+        turtle.setheading(0)
+        draw_human()
 
 
 
@@ -226,9 +376,9 @@ def turttest():
 if __name__ == "__main__":  # maybe I will import this script somewhere and want to call the rps function. It's also just good practice
     clear()
     
-    turttest()
+    #turttest()
 
-    end = input() # kills the script... used for debugging turtles
-    exit()
-
-    #rps()
+    #end = input() # kills the script... used for debugging turtles
+    #exit()
+    turtle.hideturtle()
+    rps()
