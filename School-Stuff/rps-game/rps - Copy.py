@@ -1,6 +1,6 @@
 
 import os # for the clear function! Maybe I should get rid of this
-
+import random # for the random functions
 
 
 # a lot of this code was from my old rps script earlier this term!
@@ -37,17 +37,24 @@ def winner(player1, player2): # checking who wins. Also does tie checking for fu
             return('Player 1 Wins')
     
 
-def playerpicker():
+def playerpicker():  # made this a function becasue... Not sure why
     looplimit = 0
     ppass = False
     while looplimit < 5 and ppass == False:  # this loops 5 times trying to get the player to make a valid choice
-            player = input('Your choices are "rock" "paper" "scissors"')
+            player = input('Your choices are "rock" "paper" "scissors" ')
             ppass = valid(player)
             looplimit = looplimit + 1
             if ppass == False:
                 print(str(looplimit) + '/5 trys')
             if looplimit == 5: # after 5 tries it will insult the player
                 print('you are dumb')
+            if ppass == True:
+                return player
+
+
+def roboplayer():
+    list = ['rock', 'paper', 'scissors']
+    return random.choice(list)
     
 
 
@@ -57,12 +64,31 @@ def rps(): # recycling my code becasue I'm super lazy!!
 
     clear()
 
+    robo = input('Play against computer? "yes"/"no" ')
+
+    # we check to see if the player want's to play against the computer
+
+    if robo == "yes": 
+        print('ok')
+    if robo == "no":
+        print('ok')
+    else:
+        print('Unknown anwser! Defaulting to yes')  # super simple catch to see if player put in real anwser
+        robo = 'yes'
+
+
 
     while play == True:
+        
+        
+        # no more clearing. We have to give feedback to the userser for playing against robo
 
-        clear()
-        
-        
+
+        print('')
+        print('')
+        print('')
+        print('')
+
         print("Lets play Rock Paper Scissors!!!")
         
         
@@ -71,35 +97,35 @@ def rps(): # recycling my code becasue I'm super lazy!!
         #p1pass = False
         #looplimit = 0
         #p2pass = False
-        #die = False
+        die = False
 
         print("Player one's choice! no peaking player two!")
         
-        while looplimit < 5 and p1pass == False:  # this loops 5 times trying to get the player to make a valid choice
-            player1 = input('Your choices are "rock" "paper" "scissors"')
-            p1pass = valid(player1)
-            looplimit = looplimit + 1
-            if p1pass == False:
-                print(str(looplimit) + '/5 trys')
-            if looplimit == 5: # after 5 tries it will insult the player
-                print('you are dumb')
+        ###### Playerpicker p1 #######
+        player1 = playerpicker()
+        p1pass = valid(player1)
+
         
         #print(p1pass,player1) # I left this in last week... It was supposed to be for debug
 
-        looplimit = 0  # reseting the loop varable for the next loop
+        
         
         clear() # fancy scren clear
         
         print("Player twos's choice! no peaking player one!")
+        
+    
+        # do they play a robot?
+        if robo == 'yes':
+            player2 = roboplayer() 
+        else:
+            player2 = playerpicker()
+        
+        
+        p2pass = valid(player2)
+        #print(p2pass,player2)
 
-        while looplimit < 5 and p2pass == False:
-            player2 = input('Your choices are "rock" "paper" "scissors"')
-            p2pass = valid(player2)
-            looplimit = looplimit + 1
-            if p2pass == False:
-                print(str(looplimit) + '/5 trys')
-            if looplimit == 5:
-                print('you are dumb')
+        ###### Playerpicker p2 #######
         
         clear()
 
@@ -116,6 +142,9 @@ def rps(): # recycling my code becasue I'm super lazy!!
             play = False
 
         if die == False and player1 != player2:  # one of the few times i used a !=
+            print('Player 1 picked:',player1)
+            print('Player 2 picked:',player2)
+            
             print(winner(player1,player2))
             print('The game is over')
             print('would you like to play again?')
@@ -126,6 +155,9 @@ def rps(): # recycling my code becasue I'm super lazy!!
                 play = False
         
         if die == False and player1 == player2: # we check for a tie
+            print('Player 1 picked:',player1)
+            print('Player 2 picked:',player2)
+
             print("It's a tie!")
             print('would you like to play again?')
             playagain = input("yes/no ")

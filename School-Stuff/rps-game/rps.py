@@ -1,6 +1,8 @@
 
 import os # for the clear function! Maybe I should get rid of this
 import random # for the random functions
+import turtle
+
 
 
 # a lot of this code was from my old rps script earlier this term!
@@ -55,6 +57,7 @@ def playerpicker():  # made this a function becasue... Not sure why
 def roboplayer():
     list = ['rock', 'paper', 'scissors']
     return random.choice(list)
+    
     
 
 
@@ -173,9 +176,47 @@ def rps(): # recycling my code becasue I'm super lazy!!
     #print("p1:",p1pass,'p2:',p2pass)
 
 
+def blade_scissors(x,y):
+
+    turtle.speed(4)
+    turtle.setheading(x)
+    turtle.pd()
+    turtle.forward(y)
+    turtle.pu()
+    turtle.backward(y)
+    turtle.setheading(0)
+
+def handle_scissors(x,y,z): # X is direction, Y is Distance, and Z is radius
+    turtle.setheading(x)
+    turtle.color('red')
+    turtle.pd()
+    turtle.backward(y)
+    turtle.circle(z)
+    turtle.pu()
+    turtle.forward(y)
+    turtle.setheading(0)
 
 
+def draw_scissors():
+    blade_angle = 35 # setting top blade angle
+    blade_langth = 215 # setting blade 2 angle to - blade 1
+    turtle.pu()
+    turtle.setposition(-40, 0)
+    turtle.pensize(5)
+    turtle.speed(30)
+    turtle.color('grey')
+    blade_scissors(blade_angle,blade_langth)
+    blade_scissors(-blade_angle,blade_langth)
+    turtle.color('red')
+    turtle.pensize(7)
+    handle_scissors(blade_angle,blade_langth/3,-blade_langth/6)
+    handle_scissors(-blade_angle,blade_langth/3,blade_langth/6)
+    turtle.pu()
+    turtle.setposition(0,0)
 
+def turttest():
+    turtle.Screen()
+    draw_scissors()
 
 
 
@@ -184,5 +225,10 @@ def rps(): # recycling my code becasue I'm super lazy!!
 
 if __name__ == "__main__":  # maybe I will import this script somewhere and want to call the rps function. It's also just good practice
     clear()
+    
+    turttest()
 
-    rps()
+    end = input() # kills the script... used for debugging turtles
+    exit()
+
+    #rps()
