@@ -55,8 +55,8 @@ def playerpicker():  # made this a function becasue... Not sure why
                 return player
 
 
-def roboplayer():
-    list = ['rock', 'paper', 'scissors']
+def roboplayer(): # computer decieds what it want's to play
+    list = ['rock', 'paper', 'scissors'] 
     return random.choice(list)
     
     
@@ -71,12 +71,13 @@ def debugger(p1,p2):
     print('player checking over')
 
 
-def rps2(name,player):
+def rps2(name,player): # more efficant rps program for use in files only
     computer = roboplayer()
+    player = player.lower() # forces the player string to be lowercase
     if valid(player) == True:
-        print(winner(player,computer))
-        win = winner(player,computer)
-        if win:
+        #print(winner(player,computer))
+        win = winner(player,computer)  # had an error where it would return None on a win, but only when used in this section of the program. No idea why
+        if win: 
             print(name,'picked',player)
             print('The computer picked',computer)
             print(name,' Wins!')
@@ -98,6 +99,9 @@ def rps2(name,player):
         return('Error')
 
 
+def space(spaces): # a thing to make a lot of spaces for me easily
+    for x in range(spaces):
+        print('')
 
 
 
@@ -106,14 +110,37 @@ def rps2(name,player):
 if __name__ == "__main__":  # maybe I will import this script somewhere and want to call the rps function. It's also just good practice
     clear()
     
-    file = open("names.txt",'r')
-    players = file.readlines()
+    file = open("names.txt",'r') # text file opened here: I use vscode, so I told it to use the same location my program is to search for the file.
+    players = file.readlines() #store the file as an array becasue I'm lazy
     #print(players)
     #print(len(players))
-    for x in range(len(players)):
-        print(players[x])
-        print(players[x].inxtex('-'))
 
+    gameList = []
+
+    for x in range(len(players)): # we will run this loop for each entry into the array
+        player = players[x]
+        pos = player.find('-')
+        print('')
+        if pos >= 0:
+            name = player.split('-')[0]
+            choice = player.split('-')[1]
+            name = name.strip()
+            choice = choice.strip()
+            #print(name,choice)
+            score = rps2(name,choice)
+            gameList.insert(x,name + ':' + choice + ' - ' + score)
+
+        else:
+            print('player', x+1 , 'is incorrectly formatted')
+
+
+
+
+    space(4)
+    print(gameList) # print the winners as such
+    space(2)
+        
+        
     #rps2('test','rock')
 
     file.close()
