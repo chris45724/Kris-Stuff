@@ -1,0 +1,6 @@
+Gary - rock
+Frederico - scissors
+Amalie - paper
+Bill - scissors
+Billy Bob - paper
+End
