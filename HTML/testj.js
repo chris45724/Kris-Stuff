@@ -1,3 +1,5 @@
+var wordy = "dogs and cats";
 
+var result = wordy.substring(10,12);
 
-console.log(Math.floor((Math.random() * 8)+1));
+console.log(result);

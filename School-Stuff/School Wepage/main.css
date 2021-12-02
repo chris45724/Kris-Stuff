@@ -1,22 +1,50 @@
 body{
-    color: aqua;
+    color: red;
+    background-color: grey;
+}
+.head{
+    color: orange;
+    text-align: center;
+    font-size: 60px;
+}
+.text1{
+    color: orange;
+}
+
+.center{
+
+    margin: auto;
+    width: auto;
+    text-align: center;
+    padding: 1%;
 }
 
 
-
-
-
 .b1{
-    background-color: white;
-    color:black;
+    padding: 5px;
+    background-color: grey;
+    color:orange;
     border-style: solid;
-    border-radius: 2px;
+    border-radius: 10px;
     border-color: red;
+    text-transform: capitalize;
+    
 
 }
 
 
 .b1:hover{
+    transition-duration: .9s;
     background-color: red;
     color: white;
 }
+
+.gif1{
+    margin: auto;
+    margin-top: 25px;
+    padding: 0px;
+    border-style: solid;
+    border-color: black;
+
+}
+

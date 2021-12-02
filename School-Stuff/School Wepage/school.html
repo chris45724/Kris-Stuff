@@ -6,12 +6,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="main.css">
     <title>School Stuff</title>
+    <script src="guts/guts.js"></script>
+    <script>
+        
+    </script>
 </head>
 <body>
-    <div>
-        <p2 class=b1>
-            test
-        </p2>
+    <div class=head>
+    <p1>CS160</p1>
     </div>
+    <div class='center'>
+        <p2 class=text1 id='Game'>Play rock paper scissors</p2>
+    </div>
+    <div class=center>
+        <p2 class=b1 onclick="rpsDisplayTggle('rock','paper','scissors','rock')">
+            Rock
+        </p2>
+
+        <p2 class=b1 onclick="rpsDisplayTggle('rock','paper','scissors','paper')">
+            Paper
+        </p2>
+
+        <p2 class=b1 onclick="rpsDisplayTggle('rock','paper','scissors','scissors')">
+            Scissors
+        </p2>
+
+        <div class="image" id="rps">
+            <img style="height: 300px; width: 300px; display: none;" id="rock" class="gif1" src="parts/rock.png">
+            <img style="height: 300px; width: 300px; display: none;" id="paper" class="gif1" src="parts/paper.png">
+            <img style="height: 300px; width: 300px; display: none;" id="scissors" class="gif1" src="parts/scissors.png">
+        </div>
+    </div>
+
 </body>
 </html>
