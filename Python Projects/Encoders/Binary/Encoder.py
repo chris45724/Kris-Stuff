@@ -23,6 +23,12 @@ def binaryEncode(num): #so it begins!!
     return(binary) # this is where we print the binary
 
 
+
+
+def binaryHandHolder(num):
+    pass
+
+
 def isnumber(num): # we check that the input is a number
     if num.isnumeric() == True: 
         num == int(num) # if it's a number we save it as an int
@@ -53,8 +59,6 @@ if __name__ == "__main__":
     print('')
     print('')
     test = isnumber(test) # asks isnumber if num is a number
-    
-    
     print('') # this makes the output more readable
     print('')
     print('The binary is') 
