@@ -56,4 +56,7 @@ def main(): #this is the script
     test = isnumber(test) # asks isnumber if num is a number
     binarybot(test) # we do the stuff here
 
-main() #here be program
+
+
+if __name__ == "__main__":
+    main() #here be program
