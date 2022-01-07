@@ -7,7 +7,7 @@
 def binarybot(num): #so it begins!! 
     num = int(num)  # making sure num is an intiger !
     bits = bitcounter(num) # asking the bitcounter how many bits are needed to display the binary
-    print("there will be",bits + 1,"bits") # telling you how many total bits are needed for the number
+    
     hold = num # setting hold to num becasue we will be doing math on hold.
     power = bits # same as above but for the bits
     binary = "" # making the binary string
