@@ -30,7 +30,7 @@ def isBinaryKill(bin):
     
     for x in str(bin):
         if x != str(0) and x != str(1):
-            exit("Input not binary: Killing script")
+            exit(f"Input not binary: Killing script")
     return(True)
     
 
@@ -43,6 +43,16 @@ def binQuantity(bin):
         count = count + 1
     return count
     
+def headZeroDeleter(binary):
+    start = False
+    hold = ""
+    for x in binary:
+        if start == False and x == '0':
+            pass
+        else: 
+            start = True
+            hold = f"{hold}{x}"
+    return hold
 
 
 
@@ -63,6 +73,9 @@ if __name__ == "__main__":
         
         binary = input("Please provide binary to decode ")
         binary = binary.strip()
+        isBinaryKill(binary)
+        binary = headZeroDeleter(binary)
+        print(f"Binary : {binary}")
         print('')
         print('')
         
@@ -83,6 +96,11 @@ if __name__ == "__main__":
                 count = f"{count} + {int(binary[x])*2**x}"
             else:
                 count = f"{int(binary[x])*2**x}"
+            
+           
+            
+                
+                
         print(count)
         
         print('')
