@@ -1,0 +1,6 @@
+﻿  Assignment 2.cpp
+C:\Users\Kirs\Documents\GitHub\Kris-Stuff\School-Stuff\CS161\CPP\Week 2\Assignment 2\Assignment 2.cpp(55,17): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\Users\Kirs\Documents\GitHub\Kris-Stuff\School-Stuff\CS161\CPP\Week 2\Assignment 2\Assignment 2.cpp(56,16): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\Users\Kirs\Documents\GitHub\Kris-Stuff\School-Stuff\CS161\CPP\Week 2\Assignment 2\Assignment 2.cpp(114,21): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\Users\Kirs\Documents\GitHub\Kris-Stuff\School-Stuff\CS161\CPP\Week 2\Assignment 2\Assignment 2.cpp(141,26): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+  Assignment 2.vcxproj -> C:\Users\Kirs\Documents\GitHub\Kris-Stuff\School-Stuff\CS161\CPP\Week 2\Assignment 2\x64\Debug\Assignment 2.exe
