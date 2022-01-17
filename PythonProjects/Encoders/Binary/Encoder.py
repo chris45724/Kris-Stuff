@@ -51,13 +51,16 @@ def isNumberKill(num):
 
 # This checks if the input is a number
 
-def isNumber(num): # we check that the input is a number
-    if num.isnumeric() == True: 
-        num == int(num) # if it's a number we save it as an int
-        return True # pass num
 
-    else:
-        return(False)
+#Is number is moved to KrisModules
+
+#def isNumber(num): # we check that the input is a number
+#    if num.isnumeric() == True: 
+#        num == int(num) # if it's a number we save it as an int
+#        return True # pass num
+#
+#    else:
+#        return(False)
 
 
 def bitcounter(num): #this will provide the amount of bits needed to display the number. unless the number is one than it adds an extra 0 because im lazy
