@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1642928144 source:c:\users\kris\documents\github\kris-stuff\school-stuff\cs161\codeblocks\week 3\assignment 3\assignment\main.cpp
+	<iostream>
+	<iomanip>
+
