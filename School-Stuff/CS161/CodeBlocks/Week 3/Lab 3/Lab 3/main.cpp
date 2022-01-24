@@ -3,9 +3,9 @@
 
 
 /*
-    mad lab
     Chris Howard
-    Lab 3
+    Lab 3 | "mad lab"
+    CS161
 
 */
 /*
