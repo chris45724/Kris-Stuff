@@ -5,8 +5,11 @@
 
 def isInt(num):
     try:
-        type(int(num)) == type(5)
-        return True
+        type(int(num)) == type(int(5))
+        if float(num) % 1 == 0:
+            return True
+        else:
+            return False
     except ValueError:
         return False
 
@@ -30,23 +33,112 @@ def isFloat(num):
 
 def isNumber(num):
    if isFloat(num) == True or isInt(num) == True:
-       return True
+      return True
    else:
        return False
+   
+   
+   
+# This function returns a list of all the whole quotients of a number
+def wholeQuotient(num):
+    
+    
+    
+    num = str(num).replace(" ","")
+    
+    if isNumber(num) == False:
+        return False
+    
+    num = float(num)
+    
+    quotient = 0
+    values = list()
+    
+    for x in range(int(num)):
+        
+        quotient = float(num/(x+1))
+        if isInt(quotient) == True:
+           values.append(int(quotient))
+           
+    return values
        
+
+# this is to find the greatest common factor of the numbers
+
+def commonFactor(num1,num2):
+    
+    gcf = list() # Greatest common factors
+    
+    if isNumber(num1) == True:
+        num1 = wholeQuotient(num1)
+    
+    if isNumber(num2) == True:
+        num2 = wholeQuotient(num2)
+        
+    for x in list(num1):
+        for i in list(num2):
+            if x == i:
+                gcf.append(x)
+    
+    
+
+    
+    return gcf
+    
+
+# this will factor a number (Intened for a polynomial)
+#intended to be used on standard monomials
+
+def factorizer(mid, last, first=1):
+    
+    #mid add list is all numbers that add to be mid
+    
+    
+    lastFactors = wholeQuotient(last)
+    
+    mid = int(mid)
+    
+    for x in range(mid):
+        #print(mid-(x+1))
+        #print(x+1)
+        
+        for i in lastFactors:
+            if i == (x+1):
+                
+                if (mid-i) == (last/i):
+                    print(i)
+                
+
+        
+        
+    numFactors = wholeQuotient(mid)
+    
+    
+    
+    pass
+
+
+def allSums(num):
+    num = int(num)
+    
+    sums = list()
+    
+    for x in range(num):
+        sums.append(f"{num-(x+1)} + {x+1} = {num}")
+        
+    return sums
+        
+
 
 
 
 if __name__ == "__main__":
 
-    x = ""
+    x = input()
+    y = 12
 
-    print("\n\nWe will check if the input is an int type data")
-    x = input('What is the data? ')
     print("\n")
-    print(f'The data is an int : {isInt(x)}')
-    print(f'The data is a float : {isFloat(x)}')
-    print(f'The data is a number : {isNumber(x)}')
+    print(allSums(x))
     print("\n")
     
     pass
