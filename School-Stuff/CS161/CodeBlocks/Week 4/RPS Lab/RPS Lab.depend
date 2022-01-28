@@ -1,0 +1,7 @@
+# depslib dependency file v1.0
+1643235958 source:c:\users\kris\documents\github\kris-stuff\school-stuff\cs161\codeblocks\week 4\rps lab\main.cpp
+	<iostream>
+	<iomanip>
+	<random>
+	<time.h>
+
