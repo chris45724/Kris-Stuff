@@ -42,16 +42,12 @@ int main()
 
     srand(time(nullptr));
 
-    //I got sick of writing rock paper and scissors
-    string r = "rock";
-    string p = "paper";
-    string s = "scissors";
 
     int player;
-    int computer = 2;
-    //int computer = (rand() % 3) + 1;
+    //int computer = 2;
+    int computer = (rand() % 3) + 1;
     string playerChoice, computerChoice;
-    bool win;
+    int win;
 
 
     cout << computer;
@@ -62,9 +58,9 @@ int main()
 
     cout << "Hello!\nLet's play rock paper scissors" << endl << endl;
 
-    cout << "   For rock please enter 1" << endl << endl;
-    cout << "   For paper please enter 2" << endl << endl;
-    cout << "   For scissors please enter 3" << endl << endl;
+    cout << "   -For rock please enter 1" << endl << endl;
+    cout << "   -For paper please enter 2" << endl << endl;
+    cout << "   -For scissors please enter 3" << endl << endl;
 
     cout << "Your choice is: ";
 
@@ -72,34 +68,15 @@ int main()
 
 
     playerChoice = choiceToWords(player);
-    cout << playerChoice;
+    //cout << playerChoice;
+    computerChoice = choiceToWords(computer);
 
 
-/*
-    switch(player)
-    {
-    case 1:
-        playerChoice = r;
-        break;
 
-
-    case 2:
-        playerChoice = p;
-        break;
-
-
-    case 3:
-        playerChoice = s;
-        break;
-    default:
-        playerChoice = "Invalid";
-        dumb = true;
-    }
-*/
     if(playerChoice == "Invalid")
     {
-       cout << "You picked an invalid choice!" << endl;
-       cout << "The program will now end";
+       cout << endl << "You picked an invalid choice!" << endl;
+       cout << "The program will now end" << endl;
        exit(1);
     }
 
@@ -109,15 +86,15 @@ int main()
     {
 
 
-        if(player == 1 && computer == 2) // r-s 1-3
+        if(player == 1 && computer == 3) // r-s 1-3
         {
             win = true;
         }
-        else if (player == 2 && computer == 1) //p-r 2-1
+        else if (player == 3 && computer == 2) //p-r 3-2
         {
             win = true;
         }
-        else if (player == 3 && computer == 2) //s-p 3-2
+        else if (player == 2 && computer == 1) //s-p 2-1
         {
             win = true;
         }
@@ -125,11 +102,11 @@ int main()
         {
             win = false;
         }
-        else if (player == 1 && computer == 2) // r-p 1-2
+        else if (player == 2 && computer == 3) // r-p 2-3
         {
            win = false;
         }
-        else if (player == 2 && computer == 3) // p-s 2-3
+        else if (player == 1 && computer == 2) // p-s 1-2
         {
             win = false;
         }
@@ -142,12 +119,31 @@ int main()
 
 
     }
+    else {
+        win = 2;
+    }
 
      if (win==true)
         {
             cout << endl << "You won!!"<<endl;
-            cout << "The computer chose ";
+            cout << "you chose: " << playerChoice << endl;
+            cout << "The computer chose: " << computerChoice << endl;
+
         }
+    else if (win==false)
+    {
+        cout << endl << "You lost!!"<<endl;
+        cout << "you chose: " << playerChoice << endl;
+        cout << "The computer chose: " << computerChoice << endl;
+    }
+    else if (win == 2)
+    {
+        cout << endl << "You tied!!" << endl;
+        cout << "you chose: " << playerChoice << endl;
+        cout << "The computer chose: " << computerChoice << endl;
+    }
+
+
 
 
     return 0;
