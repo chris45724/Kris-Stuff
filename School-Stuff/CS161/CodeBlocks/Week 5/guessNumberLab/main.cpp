@@ -7,20 +7,21 @@ int main()
 
 {
     int target, guess;
-    int trys = 0;
+    int tries = 0;
     int invalidLoop = 0;
     int numGuesses = 0;
     //cout << "Target is: " << target << endl;
     char gameOn = 'y';
     srand(time(nullptr));
-    target = (rand()%100)+1;
+    //target = (rand()%100)+1;
 
     while(gameOn != 'n'){
 
-        //target = (rand()%100)+1;
+        target = (rand()%100)+1;
+        tries = 0;
 
         do {
-            //cout << "Target is: " << target << endl;
+            cout << "Target is: " << target << endl;
 
             cout << "Enter a guess (1-100): ";
             cin >> guess;
@@ -62,11 +63,11 @@ int main()
                 cout << "This is an error\nYou should not see this\n";
             }
             
-
+            tries++;
 
         }while(guess != target);
 
-        cout << "Would you like to play again?\n   [y]es [n]o: " << endl;
+        cout << "Would you like to play again?\n[y]es [n]o: ";
         cin >> gameOn;
 
 
