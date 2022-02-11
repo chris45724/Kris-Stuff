@@ -1,20 +1,13 @@
-print("We will be adding all numbers below the input")
+
+print(25%4)
 
 
-number = int(input("Please input a number: "))
-print(f'My prediction is {(number)}')
-val = int(0)
-
-words = "Equation is: 0"
-
-for x in range(number):
-    val = x + val
+for x in range(25):
     
     
-    if x == 0:
-        words = words
+    
+    if ((x % 4) == 0) or ((x % 4) == 4):
+        print(f'Loop : {x} | 3^({x}) (')
     else:
-        words = words+" + "+str(x)
+       print(f'Loop : {x} | -3^({x}) (')
     
-    print(words)
-    print(val)
