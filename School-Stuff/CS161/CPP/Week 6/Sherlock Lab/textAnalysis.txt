@@ -1,0 +1,2 @@
+The total number of words is: 3431
+The number of occurrences of "the" is: 135
