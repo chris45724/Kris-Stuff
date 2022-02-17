@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<File>
+  <Version>2.1</Version>
+  <Variables>
+    <ArrayOfVariable xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" />
+  </Variables>
+  <Flows>
+    <MainFlow>
+      <ns0:MainFlow Description="Callflow execution path." DebugModeActive="False" x:Name="Main" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:ns0="clr-namespace:TCX.CFD.Classes.Components;Assembly=3CX Call Flow Designer, Version=18.2.15.0, Culture=neutral, PublicKeyToken=7cb95a1a133e706e">
+        <ns0:TranscribeAudioComponent FileName="" x:Name="TranscribeAudio1" Tag="" DebugModeActive="False" Hints="" LanguageCode="en-US" />
+      </ns0:MainFlow>
+    </MainFlow>
+    <ErrorHandlerFlow>
+      <ns0:ErrorHandlerFlow Description="Execution path when an error ocurrs." DebugModeActive="False" x:Name="Main" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:ns0="clr-namespace:TCX.CFD.Classes.Components;Assembly=3CX Call Flow Designer, Version=18.2.15.0, Culture=neutral, PublicKeyToken=7cb95a1a133e706e" />
+    </ErrorHandlerFlow>
+    <DisconnectHandlerFlow>
+      <ns0:DisconnectHandlerFlow Description="Execution path since the call gets disconnected." DebugModeActive="False" x:Name="Main" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:ns0="clr-namespace:TCX.CFD.Classes.Components;Assembly=3CX Call Flow Designer, Version=18.2.15.0, Culture=neutral, PublicKeyToken=7cb95a1a133e706e" />
+    </DisconnectHandlerFlow>
+  </Flows>
+</File>
