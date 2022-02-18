@@ -81,12 +81,45 @@ void coin(int quantity){
 
 }
 
+/*
+
+Challenge 12
+
+This is way too much text to import.
+
+void getJudgeData() This gets a judge's (User input) vote.
+
+void calcScore() This will calculate a score. will take 5 inputs, and drop both the highest, and lowest scores.
+
+int findHighest() This will find the largest number in a list passed to it.
+
+int findLowest() This will find the lowest number in a list passed to it.
+
+*/
+
+
+void getJudgeData(double &score){
+
+
+}
 
 
 
+void calcScore(){
+
+}
 
 
 
+int findHighest(){
+
+}
+
+
+
+int findLowest(){
+
+}
 
 
 
@@ -114,6 +147,15 @@ int main(){
 
 
     coin(flips);
+
+
+
+
+    
+
+
+
+
     
     
     return 0;
