@@ -1,6 +1,6 @@
 /*
 Chris Howard
-Guess a number lab
+Functions lab
 CS161
 */
 

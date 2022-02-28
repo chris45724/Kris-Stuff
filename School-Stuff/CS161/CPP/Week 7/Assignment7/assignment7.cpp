@@ -1,7 +1,7 @@
 /*
 Chris Howard
 CS161
-Assignment
+Assignment 7
 */
 
 #include <iostream>
