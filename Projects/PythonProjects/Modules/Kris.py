@@ -40,6 +40,7 @@ def isNumber(num):
    
    
 # This function returns a list of all the whole quotients of a number
+# The numbers returned are in list format!
 def wholeQuotient(num):
     
     
@@ -86,7 +87,7 @@ def commonFactor(num1,num2):
     return gcf
     
 
-# this will factor a number (Intened for a polynomial)
+# this will factor a number (Intend for a polynomial)
 #intended to be used on standard monomials
 
 def factorizer(mid, last, first=1):
@@ -117,7 +118,8 @@ def factorizer(mid, last, first=1):
     
     pass
 
-
+# This will return all numbers that can add to be num
+# The numbers returned are in list format!
 def allSums(num):
     num = int(num)
     
