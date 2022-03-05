@@ -44,7 +44,7 @@ int main(){
     char timing = 'n';
     //opens file to write to
     ofstream outputFile;
-    outputFile.open("Prime_Numbers.txt");
+    outputFile.open("PrimeNumbers.txt");
     
     // gets user input for operation
     cout << "What number would you like to start at: ";
