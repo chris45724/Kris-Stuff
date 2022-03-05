@@ -29,7 +29,7 @@ def isFloat(num):
 
 
 #This will check the input to see if it's a number | Int and/or Float types
-#This will return a true or false statementpe
+#This will return a true or false statement's
 
 def isNumber(num):
    if isFloat(num) == True or isInt(num) == True:
@@ -86,9 +86,11 @@ def commonFactor(num1,num2):
     
     return gcf
     
+'''
+# THIS IS INCOMPLETE
 
 # this will factor a number (Intend for a polynomial)
-#intended to be used on standard monomials
+# intended to be used on standard monomials
 
 def factorizer(mid, last, first=1):
     
@@ -117,6 +119,30 @@ def factorizer(mid, last, first=1):
     
     
     pass
+'''
+
+#This returns a true or false depending on if the number provided is prime
+def isPrimeNumber(num):
+    isPrime = True
+    for x in range(num):
+        try:
+            if( (num % x) == 0 and ((x < num) and (x > 1)) ):
+                isPrime = False
+                break
+        except ZeroDivisionError:
+            pass
+            
+    return isPrime
+
+#This will generate a list of primenumbers between the given values
+#Returns a list of prime numbers
+def primeGenerator(cycles,startNum=0):
+    listOfPrimes = []
+    for x in range(cycles+startNum):
+        if isPrimeNumber(x+startNum):
+            listOfPrimes.append(x)
+    listOfPrimes.remove(0)
+    return listOfPrimes
 
 # This will return all numbers that can add to be num
 # The numbers returned are in list format!
@@ -135,12 +161,13 @@ def allSums(num):
 
 
 if __name__ == "__main__":
-
-    x = input()
-    y = 12
-
-    print("\n")
-    print(allSums(x))
-    print("\n")
+    print("Running")
+    y=100
+    num = list(primeGenerator(y))
+    print(f'There are {len(num)} prime numbers in this list!')
+    for x in range(len(num)):
+        print(f'{num[x]} is a prime number')
+    print("Finished") 
+    
     
     pass
