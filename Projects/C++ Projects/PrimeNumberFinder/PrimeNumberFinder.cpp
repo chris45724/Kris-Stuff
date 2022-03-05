@@ -12,6 +12,7 @@ lets go
 #include <iomanip>
 #include <ctime>
 #include <fstream>
+//#include "bigint-library-master/bigint.h"
 
 using namespace std;
 
@@ -51,7 +52,7 @@ int main(){
     cout << "How many cycles would you like to run: ";
     cin >> cycles;
     cout << endl;
-    cout << "Would you like to write to log\nWriting to console is slow\n[y]es [n]o: ";
+    cout << "Would you like to write to console\nWriting to console is slow\n[y]es [n]o: ";
     cin >> log;
     cout << endl;
     cout << "Would you like to save timing info in file?: ";
@@ -71,6 +72,7 @@ int main(){
     
     if(log == 'y'){ //outputs prime numbers to console and file
         for (int i = (startNumber); i <= (cycles + startNumber); i++){
+            cout << "---Running---";
             if(primeNumber(i)){
                 cout << "  " << i << "  Is a prime number | Calculated in " << (time(NULL) - startTime) << " seconds\n";
                 outputFile << i << endl;
@@ -94,7 +96,12 @@ int main(){
         }
     }
 
+    
     cout << "---Finished!---\n";
+    outputFile << "Finnished successfully" << endl;
+    cout << "Press any key then enter to close: ";
+    string close="";
+    cin >> close;
 
     
     return 0;

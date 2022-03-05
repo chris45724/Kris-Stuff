@@ -32,7 +32,7 @@ def main():
     timing = input("Would you like to save calculation time to file?\n[y]es [n]o: ")
     
     outputFile = open(os.path.join(os.path.dirname(os.path.realpath(__file__)), "Prime_Numbers.txt"), "w")
-    outputFile.write(f'All prime numbers between {Starter} and {Starter+Cycles}\n') 
+    outputFile.write(f'All prime numbers between {Starter} and {Starter+Cycles}\nPython version\n') 
     
     startTime = int(time.time())
     
