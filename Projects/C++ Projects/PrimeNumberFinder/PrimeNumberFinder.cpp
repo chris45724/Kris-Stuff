@@ -26,6 +26,7 @@ bool primeNumber(int number){
         //cout << (number % i) << endl;
         if ( ((number % i) == 0) && ((i < number) && (i > 1)) ){
             IsPrime = false;
+            break;
         }
 
     }
@@ -65,7 +66,7 @@ int main(){
     cout << endl;
     cout << endl;
 
-    outputFile << "All prime numbers between" << startNumber << " and " << startNumber + cycles << endl << "C++ version\n";
+    outputFile << "All prime numbers between " << startNumber << " and " << startNumber + cycles << endl << "C++ version\n";
     
     int startTime = time(NULL); // saving current time for calculating time taken
     
@@ -99,6 +100,7 @@ int main(){
     
     cout << "---Finished!---\n";
     outputFile << "Finnished successfully" << endl;
+    outputfile.close;
     cout << "Press any key then enter to close: ";
     string close="";
     cin >> close;
