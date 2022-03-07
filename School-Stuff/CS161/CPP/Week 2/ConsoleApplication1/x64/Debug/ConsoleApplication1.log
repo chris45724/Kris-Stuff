@@ -1,0 +1,6 @@
+﻿  ConsoleApplication1.cpp
+C:\Users\Kirs\Documents\GitHub\Kris-Stuff\School-Stuff\CS161\CPP\Week 2\ConsoleApplication1\ConsoleApplication1.cpp(73,19): warning C4244: 'initializing': conversion from 'time_t' to 'int', possible loss of data
+C:\Users\Kirs\Documents\GitHub\Kris-Stuff\School-Stuff\CS161\CPP\Week 2\ConsoleApplication1\ConsoleApplication1.cpp(78,20): warning C4244: 'initializing': conversion from 'unsigned __int64' to 'int', possible loss of data
+C:\Users\Kirs\Documents\GitHub\Kris-Stuff\School-Stuff\CS161\CPP\Week 2\ConsoleApplication1\ConsoleApplication1.cpp(88,20): warning C4244: 'initializing': conversion from 'unsigned __int64' to 'int', possible loss of data
+C:\Users\Kirs\Documents\GitHub\Kris-Stuff\School-Stuff\CS161\CPP\Week 2\ConsoleApplication1\ConsoleApplication1.cpp(96,20): warning C4244: 'initializing': conversion from 'unsigned __int64' to 'int', possible loss of data
+  ConsoleApplication1.vcxproj -> C:\Users\Kirs\Documents\GitHub\Kris-Stuff\School-Stuff\CS161\CPP\Week 2\ConsoleApplication1\x64\Debug\ConsoleApplication1.exe

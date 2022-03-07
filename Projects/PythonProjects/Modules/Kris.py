@@ -39,28 +39,17 @@ def isNumber(num):
    
    
    
-# This function returns a list of all the whole quotients of a number
+# This function returns a list of all the factors excluding 1 and the number
 # The numbers returned are in list format!
 def wholeQuotient(num):
-    
-    
-    
-    num = str(num).replace(" ","")
-    
-    if isNumber(num) == False:
-        return False
-    
-    num = float(num)
-    
-    quotient = 0
     values = list()
     
-    for x in range(int(num)):
-        
-        quotient = float(num/(x+1))
-        if isInt(quotient) == True:
-           values.append(int(quotient))
-           
+    for x in range(num):
+        try:
+            if(num % x) == 0:
+                values.append(int(x))
+        except ZeroDivisionError:
+            pass
     return values
        
 
@@ -135,13 +124,16 @@ def isPrimeNumber(num):
     return isPrime
 
 #This will generate a list of primenumbers between the given values
-#Returns a list of prime numbers
+#Returns a list of prime numbers with
 def primeGenerator(cycles,startNum=0):
     listOfPrimes = []
-    for x in range(cycles+startNum):
-        if isPrimeNumber(x+startNum):
-            listOfPrimes.append(x)
-    listOfPrimes.remove(0)
+    for i in range(cycles):
+        if isPrimeNumber(i+startNum):
+            listOfPrimes.append(i+startNum)
+    try:
+        listOfPrimes.remove(0) # zero must be removed as it passes the zero devision error without being set to false
+    except ValueError:
+        pass
     return listOfPrimes
 
 # This will return all numbers that can add to be num
@@ -162,12 +154,10 @@ def allSums(num):
 
 if __name__ == "__main__":
     print("Running")
-    y=100
+    y = int(input("Please provide a number: "))
     num = list(primeGenerator(y))
     print(f'There are {len(num)} prime numbers in this list!')
-    for x in range(len(num)):
-        print(f'{num[x]} is a prime number')
-    print("Finished") 
+    print('\n\n',num)
     
     
     pass
