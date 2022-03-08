@@ -3,13 +3,14 @@ This python program is a deminstration on brute forcing 'encryption' can take a 
 modern encryption uses prime numbers for encryption because when 2 prime numbers are multiplied together, only the same 2 prime numbers can divide the resulting product into whole numbers (excluding 1 and the number itself)
 
 By default this program will generate a file of primenumbers between 0 and 1000, but the user may specify if they would like a larger or smaller list
+This program uses a file to save prime numbers so it doesn't have to regenerate the primenumbers every time!
+    This also allows the program to attack the prime number without having to calculate each prime!
+
 The smaller the prime numbers are, the quicker the bruteforce 'attack' is. It should be noted that generating large prime numbers takes time, as the only way to tell if a number is prime is to check every possible number (all number smaller)
 
 This program is not particularly efficient or quick because this program was made for deminstration purposes
 
-If you're feeling up to the task, you may try and write a function that will use primeNumbers.txt to 'decrypt' the product, this would allow for faster decryption. 
-    You would have a list of prime numbers, and would not need to check every possible number.
-    This is also why we make a file, as picking random numbers from a file is easier than regenerating a large list of prime numbers every time
+
 
 
 Sorry for the poor comments!
@@ -52,14 +53,16 @@ def primeGenerator(endNum=1000,startNum=0):
 
 # This find all whole factors of a number excluding one and the number itself. Returns a list of factors
 # This is how we will brute force the numbers
-# This function was not originally designed for this task, instead it was designed to find all factors of any number
-# This function returns all factors of the input number (num) as a list
+# This function returns factors of the input number (num) as a list
 def factorFinder(num):
     values = list()
     for x in range(num): # making a loop that will increment x through every number smaller than our input number (num)
-        if (x != 0) and (x != 1): # we check that 'x' is not 0 or 1 as we don't care about either number
+        if (x != 0) and (x != 1): # we check that 'x' is not 0 or 1
             if(num % x) == 0:
-                values.append(int(x))
+                values.append(int(x)) # This saves both x (the smaller factor) and number / x (the larger factor) to the list. This allows us to exit the loop a lot sooner
+                # This only works if the input number is a product of prime numbers!
+                values.append(int(num/x)) # comment me out
+                break # comment me out
     return values
 
 # This will generate a file called "primeNumbers.txt", and save 'listOfNumbers' to it
@@ -85,10 +88,29 @@ def fileReader():
     return primeNumbers
 
 
+# This function works similar to factor finder, but instead of calculating the prime number, it looks it up on a table
+# This function only works with prime numbers!
+# This function will try to return the factors of a quotent of prime numbers as long as the prime numbers exist in the list! 
+# returns a list
+def factorLookUp(num): # This will only be faster if factorFinder is inefficient , or our primes are very very big
+    primeNumbers = fileReader()
+    values = list()
+    for x in primeNumbers:
+        if x > num: # sanity check. If x is larger than our input number, than we fucked up
+            break
+        #print(x)
+        if (num % x == 0) and ((x != 1) and (x != num)):
+            values.append(x) 
+            values.append(int(num/x))
+            break
+        
+        
+    return values
+        
 
 
 if __name__ == '__main__':
-    primeNumbers = fileReader()
+    primeNumbers = fileReader() # This grabs the numbers from our list of prime numbers
     loops = 10 # This controls how may loops we will do when trying to factor the product of the prime numbers
     
     regenrate = input("Would you like to make a new list of prime numbers?\n[y]es [n]o: ") #This asks the user if they would like to make a new list of prime numbers
@@ -117,7 +139,7 @@ if __name__ == '__main__':
         
         print("Generating prime numbers!\nThis may take a while")        
         fileGenerator(primeGenerator(endNum,startNum))
-        primeNumbers = fileReader()
+        primeNumbers = fileReader()# refresh the list with our newly made list
         print("Prime numbers finished generation")
     
     
@@ -129,11 +151,15 @@ if __name__ == '__main__':
         prime2 =  primeNumbers[random.randint(0, len(primeNumbers)-1)]
         print(f'{prime2} was chosen to be the second prime number')
         product = prime1 * prime2 # they are multiplied together to make our product that we will 'decrypt'
-        print(f'{product} is the product of both prime numbers')
-        print(f"Starting to factor {product}\nThis should return the first and second prime numbers")
+        print(f'{product} is the product of both prime numbers\n')
+        print(f"Starting to factor via brute force {product}\nThis should return the first and second prime numbers")
         startTime = time.time() # we save the time at which we start calculating, so we can check how long it took!
         devisors = factorFinder(product) # We save calculating the factors here
         print(f'After {round(((time.time()) - startTime),3)} seconds the factors are : {devisors}\n')
+        print(f'Starting to factor via table lookup\nThis should be much faster than calculating it')
+        startTime = time.time() # reseting the starting timer
+        devisors = factorLookUp(product) # overwriting the devisors (aka factors) and finding the factors using a table of primes
+        print(f'After {round(((time.time()) - startTime),3)} seconds the factors are {devisors}\n')
         
     
     
