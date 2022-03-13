@@ -341,12 +341,12 @@ void problem19(){
 // End of problem 19
 
 int main(){
-    problem1();
-    problem3();
-    problem4();
+    //problem1();
+    //problem3();
+    //problem4();
     problem7();
-    problem10();
-    problem19();
+    //problem10();
+    //problem19();
 
 
     return 0;
