@@ -12,11 +12,15 @@ Binary Search
 using namespace std;
 
 
-
+// This function will read a vector of values, and search for a target number
+// this function returns the position in the vector of the target number
+// if the number does not exist in the vector, it will return a -1
 int linearSearch(vector<int> Values, int target);
 
 
-
+// This function will read a vector of values, and search for a target number
+// this function returns the position in the vector of the target number
+// if the number does not exist in the vector, it will return a -1
 int binarySearch(vector<int> Values, int target);
 
 

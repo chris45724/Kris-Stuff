@@ -12,7 +12,7 @@ void swap(int &a, int&b);
 int main(){
     srand(time(nullptr));
 
-    long long int arraySize = (10000);
+    long long int arraySize = (100);
 
     //int testArray[arraySize];
 
@@ -24,7 +24,7 @@ int main(){
     }*/ 
     
     for (long long int x = 0; x < arraySize; x++){
-        testArray.push_back(rand() % 10000);
+        testArray.push_back(rand() % 100);
         //cout << testArray[x] << " ";
     }
 

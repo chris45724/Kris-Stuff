@@ -53,7 +53,7 @@ def primeGenerator(endNum=1000,startNum=0):
 
 # This find all whole factors of a number excluding one and the number itself. Returns a list of factors
 # This is how we will brute force the numbers
-# This function returns factors of the input number (num) as a list
+# This function returns the factors of the input number (num) as a list
 def factorFinder(num):
     values = list()
     for x in range(num): # making a loop that will increment x through every number smaller than our input number (num)
@@ -152,11 +152,11 @@ if __name__ == '__main__':
         print(f'{prime2} was chosen to be the second prime number')
         product = prime1 * prime2 # they are multiplied together to make our product that we will 'decrypt'
         print(f'{product} is the product of both prime numbers\n')
-        print(f"Starting to factor via brute force {product}\nThis should return the first and second prime numbers")
+        print(f"Starting to factor via calculation force {product}\nThis should return the first and second prime numbers")
         startTime = time.time() # we save the time at which we start calculating, so we can check how long it took!
         devisors = factorFinder(product) # We save calculating the factors here
         print(f'After {round(((time.time()) - startTime),3)} seconds the factors are : {devisors}\n')
-        print(f'Starting to factor via table lookup\nThis should be much faster than calculating it')
+        print(f'Starting to factor via lookup\nThis should be much faster than calculating it')
         startTime = time.time() # reseting the starting timer
         devisors = factorLookUp(product) # overwriting the devisors (aka factors) and finding the factors using a table of primes
         print(f'After {round(((time.time()) - startTime),3)} seconds the factors are {devisors}\n')
