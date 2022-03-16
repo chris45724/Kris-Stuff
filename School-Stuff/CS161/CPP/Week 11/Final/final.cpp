@@ -62,13 +62,9 @@ int main() {
 	CS 161 Final
 	*/
 
-
 	string name = "Chris Howard";
 	string date = "3/16/2022";
 	cout <<"Name - " << name << "\n" << "Date - "<< date << "\nCS 161 Final\n"; 
-
-
-
 	
 	cout << "\n#1" << endl;		
 	/*
@@ -89,12 +85,8 @@ int main() {
 		}
 	}
 	
-
-
-	
 	cout << "\n#2" << endl;
 
-	
 	cout << "1047 ends with 7: ";
 	if(endsWith7(1047)){
 		cout << "true\n";
@@ -163,7 +155,7 @@ int main() {
 		}
 		sum += x;
 	}
-	cout << "Minimum value in 'theArray' :" << min <<" | average value in 'theArray' :" << sum/13 << endl;
+	cout << "Minimum value in 'theArray': " << min <<" | average value in 'theArray': " << sum/13 << endl;
 
 	cout << "\n#5" << endl;	
 	/*
