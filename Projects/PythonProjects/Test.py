@@ -1,2 +1,2 @@
-testFile = open("primeNumbers.txt",'r')
-print(testFile.read())
+testFile = open("Test.txt","w")
+testFile.write("Test")
