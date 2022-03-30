@@ -1,0 +1,9 @@
+/*
+for functions, you need to explain
+    The name of the function
+    What it does
+    Describe the parameters
+    Describe the return type
+    Describe any modifications to the program
+    Describe anything else intrestying about the function - maybe nothing
+*/

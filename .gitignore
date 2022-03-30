@@ -1,6 +1,6 @@
 *.exe
 *.zip
-*.txt
+#*.txt
 *.gen
 *.num
 
