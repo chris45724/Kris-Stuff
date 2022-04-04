@@ -2,6 +2,7 @@
 
 using namespace std;
 
+algorithem
 
 
 void tester(int x, int y){
