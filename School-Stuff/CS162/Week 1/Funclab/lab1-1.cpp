@@ -1,5 +1,16 @@
 /*
+Chris Howard
+CS162
+Function lab
+*/
+
+
+
+
+
+/*
 YOUR CODE HERE
+ok
 */
 #include <iostream>
 #include <cmath>
@@ -28,8 +39,15 @@ return  - boolean - true means it is odd, false means it is even
 must use a template
 */
 //YOUR CODE HERE
-
-
+template <typename T>
+bool isOdd(T x){
+    if ((x % 2) != 0){
+        return true;
+    }
+    else{
+        return false;
+    }
+}
 
 
 
@@ -41,7 +59,14 @@ return  - template - the greater of the two params
 must use a template
 */
 //YOUR CODE HERE
-
+template <typename T>
+T maxof(T x, T y){
+    if (x > y){
+        return x;
+    } else {
+        return y;
+    }
+}
 
 
 
@@ -53,7 +78,22 @@ must use a template
 */
 //YOUR CODE HERE
 
+template <typename T>
+bool isPrime(T x){
+    bool truth = true;
 
+    for(T y = x - 1 ; y > 0; y--)
+    {
+        if ((x % y == 0) && (y > 1))
+        {
+            truth = false;
+            break;
+        }
+    }
+    
+    return truth;
+
+}
 
 
 //function templates
@@ -90,7 +130,7 @@ void testFunctions() {
     assertTrue(EQ(maxof(11, 99), 99), "maxof(11, 99) == 99");
     assertTrue(EQ(maxof(7.3, 5.9), 7.3), "maxof(7.3, 5.9) == 7.3");
     assertTrue(EQ(maxof(-6, 6), 6), "maxof(-6, 6) == 6");
-
+    
     cout << "Testing isPrime--------------\n";
     assertTrue(EQ(isPrime(5),true), "Test isPrime(5) == true");
     assertTrue(EQ(isPrime(9),false), "Test isPrime(9) == false");
@@ -114,6 +154,5 @@ void assertTrue(int predicate, string message) {
 	else
 		cout << "FAILED\n";
 }//function
-
 
 
