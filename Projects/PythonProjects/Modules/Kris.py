@@ -52,6 +52,8 @@ def wholeQuotient(num):
             pass
     return values
        
+def clear():
+    os.system('cls' if os.name == 'nt' else 'clear')
 
 # this is to find the greatest common factor of the numbers
 
