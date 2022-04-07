@@ -1,8 +1,13 @@
 *.exe
+# executitables
 *.zip
 #*.txt
 *.gen
+# generated files? (Text?) (Still deciding)
 *.num
+# Generated number files. Origionally from binary generators (Text)
+*.temp
+# Temp files. Normal text files to not save (Text)
 
 .vs/*
 .vscode/*

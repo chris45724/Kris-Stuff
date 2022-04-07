@@ -18,12 +18,20 @@ def discordMute(address, *args):
         print("Muting Discord")
         keyboard.press(Key.pause)
     print('')
+    
+def avatarChange(address, *args):
+    x = args
+    print(x)
+    #return x
 
 def default_handler(address, *args):
-    #print(f"DEFAULT {address}: {args}")
+    testfile = open('testfile.temp','w')
+    print(f"DEFAULT {address}: {args}")
+    testfile.write(f"DEFAULT {address}: {args}")
     pass
 
-
+#/avatar/change
+dispatcher.map("/avatar/change", avatarChange)
 dispatcher = Dispatcher()
 dispatcher.map("/something/*", print_handler)
 dispatcher.map("/avatar/parameters/MuteSelf", discordMute)
