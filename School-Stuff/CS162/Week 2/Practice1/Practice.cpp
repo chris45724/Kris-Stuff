@@ -11,9 +11,9 @@ int randish(int max){
 }
 
 template <typename T>
-T* arrayMaker(T* arrptr, T value){
-    T x[] = {arrptr, value};
-    cout << "arrayMaker: " << x[0];
+T* arrayPushback(T* arrptr, T value){
+    //T x[] = {arrptr, value};
+    //cout << "arrayMaker: " << x[0];
 
     //arrptr = *x;
     return x;
