@@ -13,11 +13,23 @@ import shutil
 import re
 
 
-
+# used to clear screen
 def clear():
     os.system('cls' if os.name == 'nt' else 'clear')
 
-def songLabler(file,out,lable):
+
+'''
+Relables music based on music metadata name
+variables:
+    file:
+        Path to the input folder
+    out:
+        Path to the output folder
+    label:
+        file name
+
+'''
+def songLabeler(file,out,label):
     song = eyed3.core.load(file)
     #print(f'Song title: {song.tag.title}')
     #print(out)
@@ -26,22 +38,41 @@ def songLabler(file,out,lable):
     newName = song.tag.title
     x = re.sub(r'[^a-zA-Z0-9+\(+\)+\s+\-]'," ",f'{newName}')
     print(x)
-    os.rename(f'{out}\\{lable}',f'{out}\\{x}.mp3')
+    os.rename(f'{out}\\{label}',f'{out}\\{x}.mp3')
     print('')
     
+'''
+Sorts music based on mode
+variables:
+    File:
+        Path to the input folder
+    out:
+        Path to the output folder
+    mode:
+        N - Renames the music according to it's metadata name (Default)
+        L - Find's all the songs with lyrics in the meta data and copies them to the output
 
-def songSorter(file,out):
+'''
+def songSorter(file,out,mode = 'L'):
     #print(file)
     song = eyed3.core.load(file)
     #print(f'Song title: {song.tag.title}')
     #print(out)
-    try:
-        x = song.tag.lyrics[0].text
-        print(f'{song.tag.title} Has lyrics\nCopying file')
-        shutil.copy2(file,out)
-        print('')
-    except:
-        pass
+    if mode == 'L':
+        try:
+            x = song.tag.lyrics[0].text
+            print(f'{song.tag.title} Has lyrics\nCopying file')
+            shutil.copy2(file,out)
+            print('')
+        except:
+            pass
+    elif mode == 'NL':
+        try:
+            x = song.tag.lyrics[0].text
+        except:
+            print(f'{song.tag.title} Has no lyrics\nCopying file')
+            shutil.copy2(file,out)
+            print('')
     #pass
 os.rename
 
@@ -64,10 +95,10 @@ def albumExplorer(path,OutPath, mode = 'N'):
         print(f'\nfile name: {file}\nPath: {path}\nOutput: {OutPath}')
         if file.endswith(".mp3"):
             print("mp3\n")
-            if mode == 'L':
-                songSorter(f'{path}\\{file}',f'{OutPath}\\')
+            if mode == 'L' or mode == 'NL':
+                songSorter(f'{path}\\{file}',f'{OutPath}\\', mode)
             elif mode == 'N':
-                songLabler(f'{path}\\{file}',f'{OutPath}\\',f'{file}')
+                songLabeler(f'{path}\\{file}',f'{OutPath}\\',f'{file}')
             
             
         elif str(file).startswith('AlbumArt') or str(file).startswith('Folder'):
@@ -85,6 +116,9 @@ def albumExplorer(path,OutPath, mode = 'N'):
             pass
 
 
+
+# file deletes file provided to it via path
+# Returns nothing
 def fileDeleter(path):
     for file in os.listdir(path):
         print(f'{file} in output file\nDeleted')
@@ -98,7 +132,7 @@ if __name__ == '__main__':
     InPath = "Projects\\PythonProjects\\MusicSorter\\Music"
     OutPath = "Projects\\PythonProjects\\MusicSorter\\Output"
     mode = 'L'
-    #mode = 'N'
+    # Modes --> N L NL
     fileDeleter(OutPath)
     albumExplorer(InPath,OutPath,mode)
     #Projects\PythonProjects\MusicSorter\Music\A Capella Science
