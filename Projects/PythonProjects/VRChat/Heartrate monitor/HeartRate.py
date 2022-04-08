@@ -10,11 +10,11 @@ from pythonosc.udp_client import SimpleUDPClient
 
 
 # inspired from https://gist.github.com/mdonkers/63e115cc0c79b4f6b8b3a6b797e485c7
-def oscInjector():
+def oscInjector(hr="0"):
     ip = "127.0.0.1"
     port = 9001
     client = SimpleUDPClient(ip, port)
-    client.send_message("/some/address", 123)   #Send heart rate info
+    client.send_message("/avatar/parameters/HeartRate", hr)   #Send heart rate info
 
 def write_hr(hr="0"):
     file = open('hr.txt', 'w+')
@@ -70,7 +70,8 @@ class HeartBeatHandler(BaseHTTPRequestHandler):
         self.wfile.write("OK".encode('utf-8'))
         data = post_data.decode('utf-8').split("=")
         print("Received BPM = {}".format(data[1]))
-        
+        print(data[1])
+        oscInjector(data[1])
         #write_hr(data[1])
 
 
