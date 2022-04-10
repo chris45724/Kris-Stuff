@@ -1,7 +1,6 @@
 from pythonosc.dispatcher import Dispatcher
 from pythonosc.osc_server import BlockingOSCUDPServer
 from pynput.keyboard import Key, Controller
-
 keyboard = Controller()
 
 
@@ -25,14 +24,15 @@ def avatarChange(address, *args):
     #return x
 
 def default_handler(address, *args):
-    testfile = open('testfile.temp','w')
+    testfile = open('testfile.temp','a')
     print(f"DEFAULT {address}: {args}")
     testfile.write(f"DEFAULT {address}: {args}")
-    pass
+    testfile.close()
+    #pass
 
+dispatcher = Dispatcher()
 #/avatar/change
 dispatcher.map("/avatar/change", avatarChange)
-dispatcher = Dispatcher()
 dispatcher.map("/something/*", print_handler)
 dispatcher.map("/avatar/parameters/MuteSelf", discordMute)
 dispatcher.set_default_handler(default_handler)
