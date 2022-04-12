@@ -7,14 +7,20 @@ from http.server import BaseHTTPRequestHandler, HTTPServer
 import socket
 from pythonosc import *
 from pythonosc.udp_client import SimpleUDPClient
+from datetime import datetime
 
 
 # inspired from https://gist.github.com/mdonkers/63e115cc0c79b4f6b8b3a6b797e485c7
-def oscInjector(hr="0"):
+
+
+def oscHr(hr="0"):
     ip = "127.0.0.1"
     port = 9001
     client = SimpleUDPClient(ip, port)
-    client.send_message("/avatar/parameters/HeartRate", hr)   #Send heart rate info
+    client.send_message("/Kris/HeartRate", hr)   #Send heart rate info
+
+
+
 
 def write_hr(hr="0"):
     file = open('hr.txt', 'w+')
@@ -69,9 +75,15 @@ class HeartBeatHandler(BaseHTTPRequestHandler):
         self._set_response(200)
         self.wfile.write("OK".encode('utf-8'))
         data = post_data.decode('utf-8').split("=")
-        print("Received BPM = {}".format(data[1]))
-        print(data[1])
-        oscInjector(data[1])
+        #print("Received BPM = {}".format(data[1]))
+        #print(data[1])
+        x = ("Received BPM = {}".format(data[1]))
+        if(int(data[1]) > 0):
+            aaaaa = datetime.now().strftime("%H:%M")
+            print(f"Received BPM = {data[1]}\nAt time {aaaaa}".format(data[1]))
+            oscHr(data[1])
+        else:
+            pass
         #write_hr(data[1])
 
 
@@ -103,3 +115,4 @@ if __name__ == '__main__':
         run(port=int(port_arg))
     else:
         run(port_arg)
+        
