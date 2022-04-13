@@ -5,6 +5,9 @@ import os
 from pythonosc.udp_client import SimpleUDPClient
 hr = 0
 
+def clear():
+    os.system('cls' if os.name == 'nt' else 'clear')
+    
 
 keyboard = Controller()
 def hrSender(hr):
@@ -25,7 +28,7 @@ def hrSender(hr):
         temphr = temphr - 10
         tens += 1
     ones = temphr
-    print(f'Heartrate\nHundreds: {hundreds}\nTens: {tens}\nOnes: {ones}')
+    print(f'Heartrate:\n| Hundreds: {hundreds}\n| Tens: {tens}\n| Ones: {ones}')
     client.send_message('/avatar/parameters/onesHR',ones)
     client.send_message('/avatar/parameters/tensHR',tens)
     client.send_message('/avatar/parameters/hundredsHR',hundreds)
@@ -38,15 +41,13 @@ def vrcSender(location, data):
 
 
 
-def clear():
-    os.system('cls' if os.name == 'nt' else 'clear')
+
 
 def print_handler(address, *args):
     #print(f"{address}: {args}")
     pass
 
 def heartRate(address, *args):
-    mode = True
     global hr
     badRead = True
     if int(args[0]) > 0:
@@ -78,46 +79,50 @@ def default_handler(address, *args):
     #testfile.write(f"DEFAULT {address}: {args}")
     pass
 
-# set up dispacher
-dispatcher = Dispatcher()
-clear()
 
 
-#dispacher tree
-dispatcher.map("/Kris/HeartRate",heartRate)
-dispatcher.map("/avatar/change", avatarChange)
-dispatcher.map("/something/*", print_handler)
-dispatcher.map("/avatar/parameters/MuteSelf", discordMute)
-#dispatcher.set_default_handler(default_handler)
 
-ip = "127.0.0.1"
-port = 9001
+if __name__ == '__main__':
+    
+    # set up dispacher
+    dispatcher = Dispatcher()
+    clear()   
 
-server = BlockingOSCUDPServer((ip, port), dispatcher)
-print("""
-###########################
-#         STARTING        #
-#         SERVER          #   
-###########################      
-""")
-print("---------- Output -----------")
-try:
-    server.serve_forever()  # Blocks forever
-    #server.serve()
-except KeyboardInterrupt:
+    #dispacher tree
+    dispatcher.map("/Kris/HeartRate",heartRate)
+    dispatcher.map("/avatar/change", avatarChange)
+    dispatcher.map("/something/*", print_handler)
+    dispatcher.map("/avatar/parameters/MuteSelf", discordMute)
+    #dispatcher.set_default_handler(default_handler)
+
+    ip = "127.0.0.1"
+    port = 9001
+
+    server = BlockingOSCUDPServer((ip, port), dispatcher)
     print("""
-###########################
-#         STOPPING        #
-#         SERVER          #
-###########################        
-        """)
-    pass
+    ###########################
+    #         STARTING        #
+    #         SERVER          #   
+    ###########################      
+    """)
+    print("---------- Output -----------")
+    try:
+        server.serve_forever()  # Blocks forever
+        #server.serve()
+    except KeyboardInterrupt:
+        print("""
+    ###########################
+    #         STOPPING        #
+    #         SERVER          #
+    ###########################        
+            """)
+        pass
 
-#testhw = 330
-#print(f'Test Heart rate {testhw}')
+    #testhw = 330
+    #print(f'Test Heart rate {testhw}')
 
-#hrSender(testhw)
+    #hrSender(testhw)
 
 
 
-#server.serve_forever()  # Blocks forever
+    #server.serve_forever()  # Blocks forever

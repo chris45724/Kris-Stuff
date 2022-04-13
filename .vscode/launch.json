@@ -20,7 +20,7 @@
     //cd $dir && g++ -g \"$fileName\" -o \"$fileNameWithoutExt\" && $dir\"$fileNameWithoutExt\"
     {
       "name": "C++ Debug",
-      "type": "cppdbg",
+      "type": "gdb",
       "request": "launch",
       "program": "${fileDirname}\\${fileBasenameNoExtension}",
       "args": [],
