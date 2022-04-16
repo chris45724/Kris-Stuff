@@ -110,6 +110,7 @@ if __name__ == '__main__':
         server.serve_forever()  # Blocks forever
         #server.serve()
     except KeyboardInterrupt:
+        keyboard.release(Key.pause)
         print("""
     ###########################
     #         STOPPING        #
