@@ -2,30 +2,31 @@
 
 using namespace std;
 
-algorithem
+// dynamicly change size of array
 
+//template <typename T>
+int arraySize(int *arr){
+    return arr[3];
 
-void tester(int x, int y){
-    cout << "Option 1\n";
+} 
+
+template <typename T>
+T appendArray(T *arr, T data , int size){
+    return arr;
 }
-
-
-void tester(int x = 0, int y = 0){
-    cout << "Option 2\n";
-
-}
-
-
 
 int main(){
-  
-    int x = 1;
-    int y = 2;
 
-    tester(x,y);
-    
-    
-    return 0;
+    int *testArr;
+    testArr = new int[5];
+    for(int x; x<5; x++){
+        testArr[x] = x;
+    }
+    cout << testArr[5] << '\n';
+
+
+    cout << arraySize(testArr);
+
+
+    //return 0;
 }
-
-

@@ -21,6 +21,12 @@ return - double - the resulting division of sum/count
 */
 double mean(int *ptr, int size) {
 	//YOUR CODE HERE
+    
+    int sum = 0;
+    for(int x; x<size;x++){
+        sum += ptr[x];
+    }
+    return (float(sum)/float(size));
 
 }//function
 
@@ -33,20 +39,34 @@ param2 - int - size - the size of the array
 return - int - the mode value in the array
 an array called freq is allocated - elements are initialized to zero
 a nested loop is used to count the number of times that index i is the same value as index j
-The maximum value in freq is used to access the value sored in the array received as a parameter
+The maximum value in freq is used to access the value stored in the array received as a parameter
 */
 int mode(int *ptr, int size) {
+    //return 1;
     //declare a pointer to an integer and allocate memory to a new array
 	//YOUR CODE HERE
-
+    int *freq = nullptr;
+    freq = new int[size]
 
     //init array elements to zero
 	//YOUR CODE HERE
+    for (int x = 0; x<size;x++){
+        freq [x] = 0;
+    }
 
 
     //a nested loop is used to count the frequency or values in the array
     //frequency is incremented when the value of index i is the same as the value of index j
 	//YOUR CODE HERE
+    for(int searchIndex = 0; searchIndex < size; searchIndex++){
+        for(int targetIndex = 0; targetIndex < size; targetIndex++){
+            if (ptr[searchIndex] == ptr[targetIndex]){
+                freq[searchIndex]++;
+                cout << "Hit\n";
+            }
+        }
+    }
+    
 
 
     //uncomment to test frequency table
