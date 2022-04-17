@@ -8,6 +8,10 @@
 # Generated number files. Origionally from binary generators (Text)
 *.temp
 # Temp files. Normal text files to not save (Text)
+*.stackdump
+# Stack dump files
+
+
 
 .vs/*
 .vscode/*

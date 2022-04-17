@@ -1,5 +1,7 @@
 /*
-YOUR CODE HERE
+Chris Howard
+CS162
+Week 3
 */
 #include <iostream>
 #include <cmath>

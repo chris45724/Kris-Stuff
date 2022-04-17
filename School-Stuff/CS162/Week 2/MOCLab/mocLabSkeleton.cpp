@@ -1,3 +1,11 @@
+/*
+Chris Howard
+CS162
+MOC Lab
+*/
+
+
+
 #include <iostream>
 
 using namespace std;
@@ -31,6 +39,13 @@ double mean(int *ptr, int size) {
 }//function
 
 
+// For some reason, I could not make a for loop inside the mode() function, so I had to make it here
+// If you happen to see why I couldn't declare 'x', please let me know, it's been stumping me
+void arrayZeroer(int *arr, int size){
+    for(int position = 0; position < size; position++){
+        arr[position] = 0;
+    }
+}
 
 /*
 mode - returns the mode of an array received as a parameter
@@ -46,14 +61,26 @@ int mode(int *ptr, int size) {
     //declare a pointer to an integer and allocate memory to a new array
 	//YOUR CODE HERE
     int *freq = nullptr;
-    freq = new int[size]
+    freq = new int[size];
 
     //init array elements to zero
 	//YOUR CODE HERE
-    for (int x = 0; x<size;x++){
-        freq [x] = 0;
-    }
+    arrayZeroer(freq, size);
 
+    /*
+    // error: ‘x’ was not declared in this scope || WHY? Why isn't it declaring
+
+    for(int x = 0; x < size; x++){
+        freq[x] = 0;
+    }
+    */
+    /* // AGAIN... I don't get it
+    int x = 0; // <--- It's declared right here
+    while(x < size){
+        freq[x] = 0;
+        x++
+    }
+    */ 
 
     //a nested loop is used to count the frequency or values in the array
     //frequency is incremented when the value of index i is the same as the value of index j
@@ -62,7 +89,7 @@ int mode(int *ptr, int size) {
         for(int targetIndex = 0; targetIndex < size; targetIndex++){
             if (ptr[searchIndex] == ptr[targetIndex]){
                 freq[searchIndex]++;
-                cout << "Hit\n";
+                //cout << ptr[searchIndex] << " Hit " << freq[searchIndex] << " Times\n";
             }
         }
     }
@@ -74,23 +101,39 @@ int mode(int *ptr, int size) {
 
     //max oriented variables
 	//YOUR CODE HERE
-
+    int maxVal =  0;
 
     //find the max in freq
     //keep track of index and value
 	//YOUR CODE HERE
-
+    // why does it work now? I must've done somthing stupid somewhere
+    for(int x = 0; x < size; x++){
+        if (freq[maxVal] < freq[x]){
+            maxVal = x;
+            //cout << "\nNew maxVal: " << ptr[maxVal] << ":" << freq[maxVal] << endl;
+            
+        }
+    }
 
     //if maxVal is 1 then there is no mode
 	//YOUR CODE HERE
+    
+    if(freq[maxVal] == 1){
+        return 0;
+    }
+
+
+
+
 	
 	//free dynamically allocated memory & set pointer to nullptr
 	//I DID NOT DO THIS IN RHE SOLUTION VIDEO BUT YOU NEED TO
-
+    freq = nullptr;
+    delete freq;
 
     //return
 	//YOUR CODE HERE
-	return 0;
+	return ptr[maxVal];
 
 }//function
 
@@ -107,6 +150,7 @@ int main()
     //assign random values from 0 to 100 to arr
     for(int i = 0;i<SIZE;i++) {
         arr[i] = rand()%100;
+        //arr[i] = rand()%5;
     }//for
 
     //print arr

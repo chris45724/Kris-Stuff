@@ -1,32 +1,58 @@
 #include <iostream>
+#include <time.h>
+#include <random>
+#include <iomanip>
+
 
 using namespace std;
 
 // dynamicly change size of array
 
 //template <typename T>
-int arraySize(int *arr){
-    return arr[3];
-
-} 
-
+void swapArray(int *arr[],int a, int b){
+    int c = a;
+    arr[a] = arr[b];
+    arr[b] = arr[c];
+    
+}
 template <typename T>
-T appendArray(T *arr, T data , int size){
-    return arr;
+void arraySort(T* array[], int size){
+    bool sorted = false;
+    int minimum = 0;
+    int place = 0;
+    while(place < size){
+        minimum = place;
+        for(int x = place; x < size; x++){
+            if (array[minimum] > array[x]){
+                minimum = x;
+                sorted = false;
+            }
+        }
+        cout << "swapping " << array[minimum] << " with "  << array[place] << endl;
+        swapArray(array,minimum,place);
+        place++;
+        //cout << "Sorted : " << sorted << endl;
+
+    }
+
+
 }
 
+
+
 int main(){
-
-    int *testArr;
-    testArr = new int[5];
-    for(int x; x<5; x++){
-        testArr[x] = x;
+    srand(time(nullptr));
+    int size = 20;
+    int* array[size];
+    for(int x = 0; x < size; x++){
+        *array[x] = (rand()%40+1);
+        cout << array[x] << " ";
     }
-    cout << testArr[5] << '\n';
+    cout << '\n';
+    arraySort(array,size);
+    for(int x = 0; x < size; x++){
+        cout << array[x] << " ";
+    }
+    cout << '\n';
 
-
-    cout << arraySize(testArr);
-
-
-    //return 0;
 }
