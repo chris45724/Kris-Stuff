@@ -75,5 +75,8 @@
     "streambuf": "cpp",
     "typeinfo": "cpp",
     "xstring": "cpp"
-  }
+  },
+  "cSpell.words": [
+    "string"
+  ]
 }

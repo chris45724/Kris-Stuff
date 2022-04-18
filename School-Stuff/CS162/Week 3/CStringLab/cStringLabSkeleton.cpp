@@ -103,10 +103,29 @@ DO NOT USE ANY LIBRARY FUNCTIONS
 */
 //YOUR CODE HERE
 int cStringCompare(const char* str1, const char* str2){
+    int score1 = 0;
+    int score2 = 0;
     int size1 = cstringlength(str1);
     int size2 = cstringlength(str2);
+    if (size1 != size2){
+        if (size1 > size2){
+            return 1;
+        }
+        return -1;
+    }
     if (cStringEQ(str1,str2)){
         return 0;
+    }
+
+    for(int x = 0; x < size1; x++){
+        if (str1[x] > str2[x]){
+            score1++;
+        }else if(str1[x] < str2[x]){
+            score2++;
+        }
+    }
+    if (score1 > score2){
+        return 1;
     }
     return -1;
 
