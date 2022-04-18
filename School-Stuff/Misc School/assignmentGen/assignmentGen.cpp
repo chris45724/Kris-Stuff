@@ -111,7 +111,7 @@ void inputHwGenerator(){
         for(int x = 0; x < problems; x++){
             file << "   //problem" << problemNames[x] << "();\n";
         }
-        file << "return 0\n}\n";
+        file << "return 0;\n}\n";
         file.close();
 
     }

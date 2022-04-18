@@ -9,7 +9,7 @@
                 "-g",
                 "${file}",
                 "-o",
-                "${fileDirname}/${fileBasenameNoExtension}"
+                "${fileDirname}"
             ],
             "options": {
                 "cwd": "${fileDirname}"
@@ -22,7 +22,7 @@
         },
         {
             "type": "cppbuild",
-            "label": "C/C++: cpp.exe build active file",
+            "label": "C/C++: cpp.exe build active file2",
             "command": "C:\\msys64\\usr\\bin\\cpp.exe",
             "args": [
                 "-fdiagnostics-color=always",

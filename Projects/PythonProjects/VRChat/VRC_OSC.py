@@ -3,6 +3,7 @@ from pythonosc.osc_server import BlockingOSCUDPServer
 from pynput.keyboard import Key, Controller
 import os
 from pythonosc.udp_client import SimpleUDPClient
+from Kris import *
 hr = 0
 
 def clear():
@@ -75,7 +76,7 @@ def avatarChange(address, *args):
 
 def default_handler(address, *args):
     #testfile = open('testfile.temp','w')
-    print(f"DEFAULT: {address}: {args}")
+    print(f"Not handled: {address}: {args}")
     #testfile.write(f"DEFAULT {address}: {args}")
     pass
 
@@ -105,6 +106,7 @@ if __name__ == '__main__':
     #         SERVER          #   
     ###########################      
     """)
+    print(f'Local IP address is: {getIP()}')
     print("---------- Output -----------")
     try:
         server.serve_forever()  # Blocks forever

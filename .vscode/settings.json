@@ -77,6 +77,14 @@
     "xstring": "cpp"
   },
   "cSpell.words": [
+    "PYTHONPATH",
     "string"
-  ]
+  ],
+  "python.envFile": "${workspaceFolder}/.env",
+  "terminal.integrated.env.windows": {
+    "PYTHONPATH": "${workspaceFolder}\\Projects\\PythonProjects\\Modules"
+  },
+  "python.analysis.extraPaths": [
+    "./Projects/PythonProjects/Modules"
+  ],
 }

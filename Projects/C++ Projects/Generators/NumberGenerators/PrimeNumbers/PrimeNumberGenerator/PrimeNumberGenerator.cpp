@@ -71,15 +71,15 @@ int main(){
     outputFile << "All prime numbers between " << startNumber << " and " << startNumber + cycles << endl << "C++ version\n";
     
     int startTime = time(NULL); // saving current time for calculating time taken
-    
+    int calcTime = time(NULL);
     
     if(log == 'y'){ //outputs prime numbers to console and file
         cout << "---Running---";
         for (int i = (startNumber); i <= (cycles + startNumber); i++){
-            
+            calcTime = time(NULL);
             if(primeNumber(i)){
-                cout << "  " << i << "  Is a prime number | Calculated in " << (time(NULL) - startTime) << " seconds\n";
-                outputFile << i << "    | Calculated in " << (time(NULL) - startTime) << " seconds" << endl;
+                cout << "  " << i << "  Is a prime number | Calculated in "<< (time(NULL) - calcTime) << " at " << (time(NULL) - startTime) << " seconds\n";
+                outputFile << i << "    | Calculated in "<< (time(NULL) - calcTime) << " at " << (time(NULL) - startTime) << " seconds\n";
             }   
         }
     }
@@ -94,8 +94,9 @@ int main(){
     else{   // just outputs to file | Written as an if/else to allow code to run faster
         cout << "---Running---";
         for (int i = (startNumber); i <= (cycles + startNumber); i++){
+            calcTime = (time(NULL) - startTime);
             if(primeNumber(i)){
-                outputFile << i << "    | Calculated in " << (time(NULL) - startTime) << " seconds" << endl;
+                outputFile << i << "    | Calculated in "<< ((time(NULL) - startTime) - calcTime) << " at " << (time(NULL) - startTime) << " seconds\n";
             } 
             
         }
@@ -103,7 +104,7 @@ int main(){
 
     
     cout << "---Finished!---\n";
-    outputFile << "Finnished successfully after " << (time(NULL) - startTime)<< " seconds" << endl;
+    outputFile << "Finished successfully after " << (time(NULL) - startTime)<< " seconds" << endl;
     outputFile.close();
     cout << "Press any key then enter to close: ";
     string close="";

@@ -1,0 +1,8 @@
+
+
+Starting loop 1
+There are 861 prime numbers in our list
+The first prime number is: 100693
+The second prime number is: 109211
+The product of the prime numbers is: 10996783223
+Starting reverse calculation

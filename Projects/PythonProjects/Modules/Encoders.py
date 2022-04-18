@@ -5,7 +5,7 @@ from Kris import *
 
 
 
-def binaryEncode(num): #so it begins!! 
+def binaryEncode(num : int): #so it begins!! 
     num = int(num)  # making sure num is an intiger !
     bits = bitcounter(num) # asking the bitcounter how many bits are needed to display the binary
     hold = num # setting hold to num becasue we will be doing math on hold.

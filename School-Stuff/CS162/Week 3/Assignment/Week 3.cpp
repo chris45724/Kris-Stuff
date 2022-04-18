@@ -212,58 +212,64 @@ English: I SLEPT MOST OF THE NIGHT
 Pig Latin: IAY LEPTSAY OSTMAY FOAY HETAY IGHTNAY 
 ----- 16 -----
 */
-void pigLatin(string sentence){
+string pigLatin(string sentence){
    int place = 0;
    int length = sentence.size();
    bool endSentence = false;
    string temp = "";
+   string out = "";
    int wordBegining = place;
    int wordEnd = place;
    bool endWord = false;
    bool newWord = true;
    while(!endSentence){
       temp = "";
-      while(!endWord &&((place < length))){
-         if(isalnum(sentence[place]) && (newWord)){
+      newWord = true;
+      endWord = false;
+      while(!endWord){
+         if((isalnum(sentence[place])) && (newWord)){
             wordBegining = place;
+            newWord = false;
          }
-         else if(isalnum(sentence[place])){
-            continue;
-         }
-         else{
-            wordEnd = place;
-            endWord = true;
-         }
-         if(place >= length){
+         else if ((!isalnum(sentence[place]))){
+            //cout << "End word = " << sentence[place-1] << endl;
+            wordEnd=(place-1);
+            endWord=true;
+            place++;
             break;
-            endSentence = true;
          }
          place++;
       }
-      cout << sentence[wordEnd];
       temp = temp + sentence[wordEnd];
-      for(int x = (wordBegining + 1); x < (wordEnd); x++){
+      //cout << sentence[wordEnd];
+      for(int x = (wordBegining+1); x < (wordEnd); x++){
+         //cout << x;
+         //cout << sentence[x];
          temp = temp + sentence[x];
-         cout << sentence[x];
       }
+      //cout << sentence[wordBegining] << endl;
       temp = temp + sentence[wordBegining];
-      cout << sentence[wordBegining];
       temp = temp + "ay";
-      cout << temp << endl;
+      //cout << temp;
+      //endSentence=true;
+      out = out + temp;
       if (place >= length){
          endSentence = true;
          break;
       }
+      out = out + " ";
    }
+   return out;
    
    //place++;
 }
 void problem16(){
    cout << "\n------ Problem 16 ------\n";
    string normalSentence = "abcd efgh";
-   //cout << "Please provide a sentence: ";
-   //cin >> normalSentence;
-   pigLatin(normalSentence);
+   cout << "Please provide a sentence: ";
+   getline(cin,normalSentence);
+   cout << "Your sentence was: \"" << normalSentence << "\"\nAs pig latten it is: \"";
+   cout << pigLatin(normalSentence) << "\"\n";
 
    
 
@@ -271,9 +277,9 @@ void problem16(){
 }
 
 int main(){
-   //problem2();
-   //problem5();
-   //problem10();
+   problem2();
+   problem5();
+   problem10();
    problem16();
 return 0;
 }
