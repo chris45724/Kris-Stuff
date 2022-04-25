@@ -372,7 +372,7 @@ def lFile(fileName : str):
 
 def getIP():
     """
-    Returns the ip address of the local computer
+    Returns the local ip address of the local computer
     """
     s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
     s.settimeout(0)
@@ -395,6 +395,12 @@ def getName():
     name = socket.gethostname()
     s.close()
     return name
+
+'''
+def bubbleSort(numbers: list):
+    pass
+'''
+
 
 
 

@@ -91,14 +91,14 @@ void inputHwGenerator(){
         }
         file << "/*\nChris Howard\nCS162\nWeek " << week <<"\n*/\n";
         file << "#include <iostream>\n";
-        file << "using namespace std;"
+        file << "using namespace std;";
         file << "\n";
 
         cout << "Making functions\n";
         for(int x = 0; x < problems; x++){
             file << "\n/* "<< "\n----- "<< problemNames[x] << " -----" <<"\n\n" << "----- "<< problemNames[x] << " -----\n*/\n";
             file << "void problem" << problemNames[x] << "(){\n";
-            file << "   cout << \"------ Problem "<< problemNames[x] <<" ------\\n\";" << endl;
+            file << "   cout << \"\\n------ Problem "<< problemNames[x] <<" ------\\n\";" << endl;
             file << "\n}";
             cout<< "Problem " << x + 1 << " was created" << endl;
             cout<< "Problem " << x + 1 << " was labled problem" << problemNames[x] << "()"<< endl;

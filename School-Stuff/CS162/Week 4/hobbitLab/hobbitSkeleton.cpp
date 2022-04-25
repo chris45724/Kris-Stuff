@@ -27,10 +27,15 @@ Return -1 if not found
 int searchArr(Word *words, int size, string val) {
     //YOUR CODE HERE
     //loop through words and return the position of val if found
+    for(int x = 0; x < size; x++ ){
+        if (words[x].value == val){
+            return(x);
+        }
+    }
 
 
     //don't return 0
-    return 0;
+    return -1;
 }
 
 
@@ -68,10 +73,12 @@ Return - string* - pointer to the array of strings that was allocated dynamicall
 string* initText(ifstream &inFile, int size) {
     //create a string pointer that points to dynamically allocated memory
     //YOUR CODE HERE
-    
+    string *arrayOfWords = nullptr;
+    arrayOfWords = new string[size];
 	
     //create a string to store the current word in the file
     //YOUR CODE HERE
+    string currentWord = "";
     
 
     //YOUR CODE HERE
@@ -79,12 +86,33 @@ string* initText(ifstream &inFile, int size) {
     //If you want to process the words at all, this is a good place to consider it - examples - Cat Cat, cat cat, cat" and cat.
 	//I lower-cased the first letter. Example Cat is now cat.
 	//More processing = better results but makes it more complicated
+    int position = 0;
+    while(inFile >> currentWord) {
+        int wordLength = currentWord.length();
+        string temp = "";
+        for(int x = 0; x < wordLength; x++){
+            char letter = tolower(currentWord[x]);
+
+            if (!(isalnum(letter))){
+            continue;
+            }
+            temp+= letter;
+            //cout << letter << endl;
+        }
+        currentWord = temp;
+
+
+
+
+        arrayOfWords[position] = currentWord;
+        position++;
+    }
 	
 	
 	
     //return something
 	//don't return 0
-	return 0;
+	return arrayOfWords;
     
 }//function
 
@@ -103,7 +131,12 @@ Word* analyzeWords(string *words, int size, int &resultsSize) {
     //YOUR CODE HERE
     //create a Word pointer to a dynamically allocated array of Words of size, size
 	// this is called a concordance
-    
+    Word* wordArray = nullptr;
+    wordArray = new Word[size];
+    for(int x = 0; x < size; x++){
+        wordArray[x].value = "";
+        wordArray[x].num = 0;
+    }    
 
     //YOUR CODE HERE
     //Build the concordance here
@@ -111,14 +144,28 @@ Word* analyzeWords(string *words, int size, int &resultsSize) {
 	//if you find a new word, then add it to the concordance
 	//if the word is already in the concordance then increment the count
 	//use the searchArr function to search
-	
+    int position = 0;
+    for(int x = 0; x < size; x++){
+        int target = searchArr(wordArray,size,words[x]);
+        if(target == -1){
+            //cout << words[x] << endl;
+            wordArray[position].value = words[x];
+            wordArray[position].num = 1;
+            position++;
+            resultsSize++;
+        }
+        else{
+            wordArray[target].num++;
+        }
+
+    }
 	
 	
     //YOUR CODE HERE
     //return pointer to Word array
 	//don't return 0
 	
-    return 0;
+    return wordArray;
 	
 }//function
 
@@ -134,8 +181,11 @@ Format is "word - count\n"
 
 void printResults(Word *results, int size) {
     //YOUR CODE HERE
-	//Iterate over results and print out the words and the number of occurences
-    
+	//Iterate over results and print out the words and the number of occurrences
+
+    for(int x = 0; x < size; x++){
+        cout << results[x].value << " occur " << results[x].num << " times\n";
+    }
 	
 	
 }
@@ -162,12 +212,18 @@ int main() {
 
     //we will use this to manage our array
     int MAX_NUM = countWords(inFile);
+    //cout << countWords(inFile);
+
+
 
     //declare an array of Words of size MAX_NUM and assign it to the pointer from earlier
     text = initText(inFile, MAX_NUM);
+    //cout << initText(inFile, MAX_NUM);
+
 
     //call countWords
     results = analyzeWords(text, MAX_NUM, resultsSize);
+    //analyzeWords(text, MAX_NUM, resultsSize);
 
     //edit for testing
     printResults(results, resultsSize);
