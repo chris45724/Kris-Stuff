@@ -36,7 +36,9 @@ if __name__ == '__main__':
     
     
     print("\n--- Finished ---")    
-    print(f'Until {number}, there are {primeNumbers} prime numbers')
+    print(f'At {number}, there are {primeNumbers} prime numbers')
+    
+    #print(f'Checking: {len(primeGenerator(number))} prime numbers found')
     
     #d = {'Number':listONumbers,'PrimeNumbers':listOPrimes }
     #data = pd.DataFrame(data=d)

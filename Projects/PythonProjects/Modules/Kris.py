@@ -295,6 +295,7 @@ def primeGenerator(finalNum : int ,startNum=0):
     - ValueError
         - This function can only accept integers
     """
+    finalNum +=1
     if(finalNum <= startNum):
         raise NegativeValue
     listOfPrimes = []
