@@ -7,7 +7,7 @@ from pythonosc.udp_client import SimpleUDPClient
 
 
 
-ip = "127.0.0.1"
+ip = "192.168.0.100"
 port = 9999
 
 client = SimpleUDPClient(ip, port)  # Create client
@@ -19,4 +19,4 @@ client = SimpleUDPClient(ip, port)  # Create client
 #client.send_message('/something2/test2/',True) 
 #client.send_message("/Kris/HeartRate", 25)
 print("Sending")
-client.send_message("/Test/Networking",25)
+client.send_message("/Test/Networking","Kieran, you mom is gay lol")

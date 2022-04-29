@@ -11,6 +11,9 @@
 *.stackdump
 # Stack dump files
 
+*.tmp
+# Temp files. Normal text files to not save (Text)
+
 
 
 .vs/*

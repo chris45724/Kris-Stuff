@@ -84,6 +84,7 @@
     "factorizer",
     "INET",
     "krpc",
+    "nums",
     "OSCUDP",
     "pynput",
     "pythonosc",

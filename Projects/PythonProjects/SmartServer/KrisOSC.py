@@ -12,14 +12,23 @@ from Kris import *
 
 
 
+def print_handler(address, *args):
+    print(f"{address}: {args}")
+    #pass
 
-    
+
+def kieranGay(address, *args):
+    print("\nHAHA You're gay lol")
 
 
 def default_handler(address, *args):
+    
     print(f"Not handled\nAddress: {address} Value: {args}")
     print("")
+    if(args[0] == 3):
+        clear()
     pass
+
 
 
 
@@ -32,11 +41,11 @@ if __name__ == '__main__':
 
     #dispacher tree
     #dispatcher.map("/Kris/HeartRate",heartRate)
-    #dispatcher.map("/address/*", function)
-
+    
+    dispatcher.map("/test/kieranGay", kieranGay)
     dispatcher.set_default_handler(default_handler)
 
-    ip = "127.0.0.1"
+    ip = str(getIP())
     #port = int(input("Please enter a port: "))
     port = 9999
 
@@ -47,7 +56,7 @@ if __name__ == '__main__':
     #          SERVER         #   
     ###########################      
     """)
-    print(f'Local IP address is: {getIP()}\nComputer Network name is: {getName()}')
+    print(f'Local IP address is: {ip}\nComputer Network name is: {getName()}')
     print("\n---------- Server Output -----------")
     try:
         server.serve_forever()  # Blocks forever

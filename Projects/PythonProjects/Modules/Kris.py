@@ -37,6 +37,7 @@ def demo(a,b=3)
 
 
 
+from logging import exception
 import socket
 import os
 import sys
@@ -116,7 +117,11 @@ def isNumber(num):
 # The numbers returned are in list format!
 def wholeQuotient(num: int):
     """
+    
     Evaluates a number to find all possible quotents
+    
+    ---
+    
     ### Paramaters:
     num : Int
         - This is the number you want to evaluate
@@ -124,12 +129,22 @@ def wholeQuotient(num: int):
     ### Returns:
         - List : Int
             - A list of Int's will be returned containing all possible quotents excluding the number itself
+                unless the number itself is 1
             - Will only return a list containing 1 if the number is prime
-    Raises
+    
     -----
+    
+    #### Raises:
     - ValueError
-        - This function can only accept integers  
+        - This function can only accept integers
+        - This function only works with positive numbers  
 """
+
+    if num == 0:
+        raise ValueError("wholeQuotent cannot handle 0")
+    if num < 0:
+        raise ValueError("wholeQuotent cannot handle values less than 0")
+    
     values = list()
     
     for x in range(num):
@@ -138,6 +153,7 @@ def wholeQuotient(num: int):
                 values.append(int(x))
         except ZeroDivisionError:
             pass
+    values.append(num)
     return values
        
 def clear():
@@ -147,52 +163,85 @@ def clear():
     os.system('cls' if os.name == 'nt' else 'clear')
 
 # this is to find the greatest common factor of the numbers
-
-def commonFactor(num1 : int,num2 : int):
+    
+def commonFactor(*input: int):
     """
-    Will evaluate 2 intigers to find their common factors
-    This may include both num1 or num2
+    Will evaluate 2 or more intigers to find their common factors
+    
+    Provide data as single list or as extra arguments
+    
+    ---
     
     ### Paramaters:
-    1: num1 : int
-        - The first number you want to find common factors of
-        
-    2: num2 : int
-        - The second number you want to find common factors of
+    input : list/args
+        may be list of ints e.g. commonFactor(list1) 
+        may be individual arguments e.g. commonFactor(a,b,c)
+        may NOT be a mix e.g. commonFactor(list1, list2), or commonFactor(list1, a)
     
     ### Returns:
         - List : int
             - Returns a list of ints containing common factors
-            - Will return a list only containing 1 if they have no common factors
+            - Will return a list only containing [1] if they have no common factors
             - Returns negative numbers if negative numbers were provided
-    Raises
     -----
+    
+    #### Raises:
     - ValueError
-        - This function can only accept integers  
+        - This function can only accept integers
+        - This function cannot handle a list and a second argument  
     """
+    nums = list()
+    #our target numbers
+    
+    
+    factorList = list()
+    # List to store every factor for every number
+    # will find all common numbers
+    
     gcf = list() # Greatest common factors
     negative = False
-    if (num1 < 0):
-        num1 = -num1
-        negative = True
-    if (num2 < 0):
-        num2 = -num2
-        negative = True
+    if(type(input[0]) == list):
+        print("aa")
+        print (len(input))
+        if(len(input) > 1):
+            raise ValueError("commonFactor cannot handle a list and another argument")
+        size = (len(input[0]))
+        temp = input[0]
+        #input[0] = temp[0]
+        for x in range(size):
+            nums.append(temp[x])
+
+    else:
+        for x in range(len(input)):
+            nums.append(input[x])
     
-    if isNumber(num1) == True:
-        temp = num1
-        num1 = wholeQuotient(num1)
-        num1.append(temp)
+
     
-    if isNumber(num2) == True:
-        temp = num2
-        num2 = wholeQuotient(num2)
-        num2.append(temp)
+    
+    for x in range(len(nums)):
+        if (nums[x] < 0):
+            nums[x] = -nums[x]
+            negative = True
         
-    for x in list(num1):
-        for i in list(num2):
-            if x == i:
-                gcf.append(x)
+        temp = list()
+        temp = wholeQuotient(nums[x])
+        factorList.append(temp)
+        
+
+    
+    for currentList in range((len(factorList))):
+        for currentNumber in (factorList[currentList]):
+            if(currentNumber in gcf):
+                continue
+            common = True
+            for checkList in range(len(factorList)):
+                if (currentNumber not in factorList[checkList]):
+                    common = False
+            if common:
+                gcf.append(currentNumber)
+            #print(f"common for {currentNumber} = {common}")
+    
+                
     if negative:
         temp = []
         for x in gcf:
@@ -205,7 +254,10 @@ def commonFactor(num1 : int,num2 : int):
 
     
     return gcf
-    
+
+
+
+
 '''
 # THIS IS INCOMPLETE
 
@@ -341,6 +393,7 @@ def allSums(num : int):
         
 def localFile(fileName : str):
     """
+    BROKEN
     takes a file name, and returns the local directory as a string
     
     ### Paramaters:
@@ -356,6 +409,7 @@ def localFile(fileName : str):
 
 def lFile(fileName : str):
     """
+    BROKEN
     alias to localFile
     
     takes a file name, and returns the local directory as a string
@@ -406,7 +460,4 @@ def bubbleSort(numbers: list):
 
 
 if __name__ == "__main__":
-    
-    print(wholeQuotient(1681))
-    
     pass
