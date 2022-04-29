@@ -201,8 +201,7 @@ def commonFactor(*input: int):
     gcf = list() # Greatest common factors
     negative = False
     if(type(input[0]) == list):
-        print("aa")
-        print (len(input))
+        #print (len(input))
         if(len(input) > 1):
             raise ValueError("commonFactor cannot handle a list and another argument")
         size = (len(input[0]))
@@ -444,12 +443,56 @@ def getIP():
 
 def getName():
     """
-    Returns the name of the local computer
+    Returns the local network name of the local computer
     """
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     name = socket.gethostname()
     s.close()
     return name
+
+
+
+def selectionSort(*nums : int):
+    """
+    
+    """
+    data = list()
+    if(type(nums[0]) == list):
+        if(len(nums) > 1):
+            raise ValueError("commonFactor cannot handle a list and another argument")
+        size = (len(nums[0]))
+        temp = nums[0]
+        #input[0] = temp[0]
+        for x in range(size):
+            data.append(temp[x])
+
+    else:
+        for x in range(len(nums)):
+            data.append(nums[x])
+
+    sorted = False
+    position = 0
+    while(True):
+        smallest = position
+        if position >= len(data):
+            position = 0
+            if sorted == True:
+                break
+        for current in (range((len(data))-position)):
+            #print(f"Current = {current+position} : {data[current+position]}")
+            #print(f"evaluate {data[smallest]} > {data[current+position]} : {data[smallest] > data[current+position]}")
+            if(data[smallest] > data[current+position]):
+                
+                sorted = False
+                smallest = (current+position)
+        temp = data[position]
+        data[position] = data[smallest]
+        data[smallest] = temp
+        position = position + 1
+        sorted = True
+    return data
+    
+
 
 '''
 def bubbleSort(numbers: list):
@@ -460,4 +503,5 @@ def bubbleSort(numbers: list):
 
 
 if __name__ == "__main__":
+    clear()
     pass
