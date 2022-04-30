@@ -132,3 +132,7 @@ def headZeroDeleter(binary):
             start = True
             hold = f"{hold}{x}"
     return hold
+
+
+if __name__ == '__main__':
+    print(binaryEncode(8))
