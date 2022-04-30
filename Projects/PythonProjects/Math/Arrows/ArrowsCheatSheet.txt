@@ -1,0 +1,48 @@
+What is it:
+    Arrows is a trinary encoding scheme designed and intended to be simple to use, but with no online tools to decode it.
+    This prevents inexperienced 'cryptographers' from cracking the code. Because trinary is quite uncommon, there will be very little information available online
+    
+
+Encoding Schema on per symbol basis
+- = 0
+< = 1
+> = 2
+
+
+Example of a 4 bit encode (6 bits is the standard)
+---- 0
+---< 1
+---> 2
+--<- 3
+--<< 4
+--<> 5
+-->- 6
+-->< 7
+-->> 8
+-<-- 9
+-<-< 10
+-<-> 11
+-<<- 12
+-<<< 13
+-<<> 14
+-<>- 15
+-<>< 16
+-<>> 17
+->-- 18
+->-< 19
+->-> 20
+-><- 21
+-><< 22
+-><> 23
+->>- 24
+->>< 25
+->>> 26
+<--- 27
+
+Base Specs:
+    By default, each byte will contain 6 bits, This allows for 243 individual values; for ascii, you only need 177 values.\
+
+To do:
+    design 4 bit version of Arrows
+    make specification known to an auto decoder
+        maybe use prefixes on the data

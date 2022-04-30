@@ -522,7 +522,7 @@ def bubbleSort(numbers: list):
 
 
 
-def krisEncode(text : str):
+def arrowEncode(text : str):
     text.lower()
     charList = list()
     for x in text:
@@ -564,12 +564,13 @@ def krisEncode(text : str):
     return output    
 
 
-def krisDecoder(code : str):
+
+def arrowDecode(code : str):
     output = ""
     if ((len(code)%6 != 0)):
         print("Issue!")
         
-    print(int(len(code)/6))
+    
     for group in range(int(len(code)/6)):
         solution = 0
         for letter in range(6):
