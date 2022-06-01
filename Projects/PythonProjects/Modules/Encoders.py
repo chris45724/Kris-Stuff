@@ -199,6 +199,10 @@ if __name__ == '__main__':
     print(f'Encoded: {encodedText}\nDecode check: \"{arrowDecode(encodedText)}\"')
     print(f'Length of {len(encodedText)}')
     
+    text = str(input('Please provide a string to decode: '))
+    decodedText = arrowDecode(text)
+    print(f'Decoded text:{decodedText}')
+    
     
     
     
