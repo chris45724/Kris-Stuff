@@ -1,4 +1,5 @@
 from Kris import *
+from Encoders import *
 
 clear()
 data = input("Encoded string: ")
